@@ -4,7 +4,7 @@ export const FETCH_SM_REGISTER = "FETCH_SM_REGISTER"
 export const FETCH_SM_LOGIN = "FETCH_SM_LOGIN"
 
 
-
+export const CREATE_POST = "CREATE_POST"
 export const FETCH_SM_START = "FETCH_SM_START"
 export const FETCH_SM_SUCCESS = "FETCH_SM_SUCCESS"
 export const FETCH_SM_FAIL = "FETCH_SM_FAIL"
@@ -60,14 +60,21 @@ export const fetchHome = (user) => (dispatch) =>{
     axios 
     .get('http://localhost:2020/home')
     .then(data =>{
-        dispatch({type: FETCH_SM_HOME, payload: data.data.logged_in})
-
-        if(user !== null){
-        data.data.currentuser = user
-
-        }
-    //    console.log(data.data)
+        dispatch({type: FETCH_SM_HOME, payload: data})
+        // .data.logged_in
+       console.log(data.data)
     })
+    .catch(err=>{
+        dispatch({type: FETCH_SM_FAIL, payload: err.message})
+        console.log(err.message)
+    })
+}
+export const makePost = (post) => (dispatch) =>{
+    dispatch({type: FETCH_SM_START})
+    console.log(post)
+    axios 
+    .post('http://localhost:2020/home', post)
+    .then(data =>{dispatch({type: CREATE_POST, payload: data})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)

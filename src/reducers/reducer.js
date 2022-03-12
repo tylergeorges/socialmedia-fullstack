@@ -1,9 +1,10 @@
-import { FETCH_SM_START, FETCH_SM_FAIL, FETCH_SM_SUCCESS, FETCH_SM_LOGIN, FETCH_SM_REGISTER, FETCH_SM_HOME } from "../actions/actions"
+import { FETCH_SM_START, FETCH_SM_FAIL, FETCH_SM_SUCCESS, FETCH_SM_LOGIN, FETCH_SM_REGISTER, FETCH_SM_HOME, CREATE_POST } from "../actions/actions"
 const initialState = ({
     currentuser: null,
     isLoading: false,
     error: '',
-    users: []
+    users: [],
+    posts: []
 })
 
 export default function reducer(state=initialState, action){
@@ -33,9 +34,16 @@ export default function reducer(state=initialState, action){
         }
         case FETCH_SM_HOME:
         //    action.payload.data.currentuser = state.currentuser 
-        //    console.log(action.payload)
+           console.log(action.payload)
             return{
-                ...state, isLoading: false, users: state.users, error: '', currentuser:action.payload
+                ...state, isLoading: false, users: state.users, error: '', currentuser:action.payload.data.logged_in, posts: action.payload.data.userposts
+            }
+        case CREATE_POST:
+
+           action.payload.data.posts.author =state.currentuser 
+           console.log(state.posts)
+            return{
+                ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: [...state.posts, action.payload.data.posts]
             }
         default: return state
     }
