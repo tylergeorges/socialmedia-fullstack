@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { fetchSm } from './actions/actions';
+import { connect } from 'react-redux';
 import './App.css';
+import Welcome from './components/Welcome';
+import { Switch, Route } from 'react-router-dom';
+import Register from './components/Register';
+import Login from './components/Login';
+import Home from './components/Home';
 
-function App() {
+
+function App(props) {
+
+  useEffect(()=>{
+    props.fetchSm()
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        <Route path="/register" component={Register}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/home" component={Home}/>
+        <Route path='/' component={Welcome} />
+      </Switch>
     </div>
   );
 }
 
-export default App;
+export default connect(null, {fetchSm})(App);
