@@ -1,0 +1,7 @@
+{
+  "name": "sm-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

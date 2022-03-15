@@ -1,38 +1,73 @@
-.App {
+*{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.post{
+  background-color: white;
+  border: 1px solid grey;
+  width: 30%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.postCon{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.searchBar{
+ vertical-align: top;
+
+  width: 250px;
+  height: 40px;
+  border: none;
+  background-color: #e4e6eb;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  left: 28%;
+  top: 30%;
+}
+
+.home{
+  position: relative;
+}
+
+.sidebarbtns{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  flex-direction: column;
+}
+
+#home{
+  margin-top: 5px;
+
   color: white;
+  font-size: 20px;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  border: none;
+  background-color: red;
+  text-align: center;
+  border-radius: 20px;
+  text-decoration: none;
 }
+#logout{
+  margin-top: 5px;
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  border: none;
+  background-color: red;
+  text-align: center;
+  border-radius: 20px;
+  text-decoration: none;
 }

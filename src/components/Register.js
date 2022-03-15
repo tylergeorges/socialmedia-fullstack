@@ -26,7 +26,7 @@ const Register = (props) =>{
         // }
 
         // setUser({[e.target.name]: [e.target.value]})
-        setUser(e.target.name)
+        setUser(e.target.value)
 
     }
 
