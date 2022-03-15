@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Search from './components/Search';
 import UserProfile from './components/UserProfile';
+import Notifications from './components/Notifactions';
 
 function App(props) {
 
@@ -23,6 +24,7 @@ function App(props) {
         <Route path="/home" component={Home}/>
         <Route path="/search/:user" component={Search}/>
         <Route path="/:user" component={UserProfile}/>
+        <Route path="/notifactions" component={Notifications}/>
         <Route path='/' component={Welcome} />
       </Switch>
     </div>

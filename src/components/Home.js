@@ -26,11 +26,11 @@ const Home = (props) =>{
     const [search, setSearch] = useState('')
     const [results, setSearchResults] = useState('')
 
-
+        console.log(props.currentuser)
     useEffect(()=>{
         props.fetchHome()
     }, [logged])
-
+    console.log(props)
     const makePost = (e) =>{
         e.preventDefault()
         setPost({text_content: e.target.value, author: user})
@@ -63,7 +63,7 @@ const Home = (props) =>{
         <div className="home">
             <h1>{user}'s Home</h1>
             <SideBar />
-            
+
             <form>
             <input name="search" type='text' placeholder="Search..." onChange={handleSearch} className="searchBar"/>
             <button type="submit" onClick={submitSearch} style={{ display: 'none' }}/>
@@ -79,7 +79,7 @@ const Home = (props) =>{
                 return(
                     <div className="postCon">
                         <div className="post">
-                    <h2>{show.author}</h2>
+                    <Link to={`/${show.author}`}><h2>{show.author}</h2></Link>
                     <p>{show.text_content}</p>
                     <p>{show.date}</p>
                     </div>

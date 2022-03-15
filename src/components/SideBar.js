@@ -1,14 +1,35 @@
 import { Link } from "react-router-dom"
-const SideBar = () => {
+import { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
+import { connect } from "react-redux"
+import { logOut } from "../actions/actions"
+
+const mapStateToProps = (state) => ({
+    currentuser: state.currentuser
+})
+
+const SideBar = (props) => {
+
+  const history = useHistory()
+
+    const logoutAcc = (e) =>{
+        e.preventDefault()
+        props.logOut()
+        history.push('/login')
+    }
+
+console.log(props)
+
     return(
         <div className="sidebar">
             <ion-icon name="enter-outline"></ion-icon>
             <div className="sidebarbtns">
-            <Link to="home" id="home">Home</Link>
-            <Link to="login" id="logout">Logout</Link>
+            <Link to="/home" id="home">Home</Link>
+            <Link to={`/${props.currentuser}`} id="profile">Profile</Link>
+            <Link to="/login" id="logout" onClick={logoutAcc}>Logout</Link>
             </div>
         </div>
     )
 }
 
-export default SideBar
+export default connect (mapStateToProps, {logOut})(SideBar)

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import { getProfile } from "../actions/actions"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import SideBar from "./SideBar"
 const mapStateToProps = (state) =>({
     posts: state.posts,
@@ -9,6 +9,9 @@ const mapStateToProps = (state) =>({
 })
 
 const UserProfile = (props) =>{
+
+    const [search, setSearch] = useState('')
+    const [results, setSearchResults] = useState('')
 
     let userprof = props.match.params.user
 
@@ -21,9 +24,32 @@ const UserProfile = (props) =>{
         e.preventDefault()
     }
 
+    const handleSearch = (e) =>{
+        e.preventDefault()
+        setSearch(e.target.value)
+
+    }
+
+    const submitSearch = (e) =>{
+        e.preventDefault()
+        // setSearchResults(search)
+        // console.log(results)
+        if(search !== '' && props.users.map(username => search === username)){
+
+            props.history.push(`/search/${search}`)
+        }
+
+    }
+
     return(
         <div >
             <SideBar/>
+
+            <form>
+            <input name="search" type='text' placeholder="Search..." onChange={handleSearch} className="searchBar"/>
+            <button type="submit" onClick={submitSearch} style={{ display: 'none' }}/>
+            </form>
+
         <h1>{userprof}'s Profile</h1>
         <button >Follow</button>
         {props.posts.map(posts => {

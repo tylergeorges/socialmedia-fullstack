@@ -26,8 +26,8 @@ const Search = (props) =>{
             props.searchUser(results)
 
         }else{
-            props.searchUser(search)
-
+            props.searchUser(newResults)
+            props.history.push(`/search/${newResults}`)
         }
         // console.log(props.searchUser(results))
     },[newResults])
@@ -44,7 +44,8 @@ const Search = (props) =>{
         // console.log(results)
         if(search !== '' && props.users.map(username => search === username)){
             setSearchResults(search)
-            history.go(`/search/${search}`)
+            console.log(newResults)
+            // history.go(`/search/${search}`)
         }
 
     }
@@ -52,15 +53,28 @@ const Search = (props) =>{
         <div>
             <SideBar/>
                         
+
+           
+            <h1>Search results for "{props.usersearched}"</h1>
+            
             <form>
             <input name="search" type='text' placeholder="Search..." onChange={handleSearch} className="searchBar"/>
             <button type="submit" onClick={submitSearch} style={{ display: 'none' }}/>
             </form>
 
-           
-            <h1>Search results for "{props.usersearched}"</h1>
-            <h2><Link to={`/${props.usersearched}`}>{props.usersearched}</Link></h2>
-            <Link to="/home">Home</Link>
+            {props.posts.map(show => {
+               if(show.author === props.usersearched){
+                return(
+                    <div className="postCon">
+                        <div className="post">
+                    <Link to={`/${show.author}`}><h2>{show.author}</h2></Link>
+                    <p>{show.text_content}</p>
+                    <p>{show.date}</p>
+                    </div>
+                    </div>
+                )
+               }
+            })}
         </div>
     )
 }

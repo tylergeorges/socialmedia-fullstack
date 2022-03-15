@@ -33,7 +33,7 @@ const Login = (props) =>{
         // props.users.map(accounts => setMadeAccs(accounts.data.Account))
         // loginAcc({username: user, password: pass})
         props.fetchLogin({username: user, password: pass})
-        props.history.push('/home')
+        history.push('/home')
     }
 
     return(

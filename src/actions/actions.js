@@ -1,17 +1,20 @@
 const axios = require('axios')
 
-export const FETCH_SM_REGISTER = "FETCH_SM_REGISTER"
+export const ADD_ACCOUNT = "ADD_ACCOUNT"
 export const FETCH_SM_LOGIN = "FETCH_SM_LOGIN"
+export const FETCH_SM_REGISTER = "FETCH_SM_REGISTER"
 
 export const CREATE_POST = "CREATE_POST"
 export const FOLLOW_USER = "FOLLOW_USER"
 export const SEARCH_USER =  "SEARCH_USER"
 export const GET_PROFILE = "GET_PROFILE"
 
+
 export const FETCH_SM_START = "FETCH_SM_START"
 export const FETCH_SM_SUCCESS = "FETCH_SM_SUCCESS"
 export const FETCH_SM_FAIL = "FETCH_SM_FAIL"
 export const FETCH_SM_HOME = "FETCH_SM_HOME"
+export const FETCH_LOG_OUT = "FETCH_LOG_OUT"
 
 export const fetchSm = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
@@ -28,13 +31,28 @@ export const fetchSm = () => (dispatch) =>{
     })
 }
 
-export const fetchRegister = (acc) => (dispatch) =>{
+export const addAccount = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     console.log(acc)
     console.log(acc)
 
     axios 
     .post('http://localhost:2020/register', acc)
+    .then(data =>{
+        dispatch({type: ADD_ACCOUNT, payload: data})
+    })
+    .catch(err=>{
+        dispatch({type: FETCH_SM_FAIL, payload: err.message})
+        console.log(err.message)
+    })
+}
+export const fetchRegister = (acc) => (dispatch) =>{
+    dispatch({type: FETCH_SM_START})
+    console.log(acc)
+    console.log(acc)
+
+    axios 
+    .get('http://localhost:2020/register')
     .then(data =>{
         dispatch({type: FETCH_SM_REGISTER, payload: data})
     })
@@ -47,7 +65,7 @@ export const fetchRegister = (acc) => (dispatch) =>{
 export const fetchLogin = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     axios 
-    .post('http://localhost:2020/login', acc)
+    .put('http://localhost:2020/login', acc)
     .then(data =>{
         dispatch({type: FETCH_SM_LOGIN, payload: data})
         // console.log(data)
@@ -101,6 +119,17 @@ export const getProfile = (user) => (dispatch) =>{
     axios 
     .get(`http://localhost:2020/${user}`)
     .then(data =>{dispatch({type: GET_PROFILE, payload: data})
+        console.log(data)})
+    .catch(err=>{
+        dispatch({type: FETCH_SM_FAIL, payload: err.message})
+        console.log(err.message)
+    })
+}
+export const logOut = () => (dispatch) =>{
+    dispatch({type: FETCH_SM_START})
+    axios 
+    .put(`http://localhost:2020/logout`)
+    .then(data =>{dispatch({type: FETCH_LOG_OUT, payload: data})
         console.log(data)})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
