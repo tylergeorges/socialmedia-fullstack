@@ -7,7 +7,9 @@ import SideBar from "./SideBar"
 const mapStateToProps = (state) =>({
     currentuser: state.currentuser,
     posts: state.posts,
-    users: state.users
+    users: state.users,
+    following: state.following,
+    isLoading: state.isLoading
 })
 
 
@@ -26,10 +28,11 @@ const Home = (props) =>{
     const [search, setSearch] = useState('')
     const [results, setSearchResults] = useState('')
 
-        console.log(props.currentuser)
     useEffect(()=>{
-        props.fetchHome()
-    }, [logged])
+        props.fetchHome(user)
+    }, [])
+
+
     console.log(props)
     const makePost = (e) =>{
         e.preventDefault()
@@ -46,7 +49,6 @@ const Home = (props) =>{
     const handleSearch = (e) =>{
         e.preventDefault()
         setSearch(e.target.value)
-
     }
 
     const submitSearch = (e) =>{
@@ -54,16 +56,18 @@ const Home = (props) =>{
         // setSearchResults(search)
         // console.log(results)
         if(search !== '' && props.users.map(username => search === username.username)){
-
             props.history.push(`/search/${search}`)
         }
 
     }
+
+    console.log( props.currentuser)
+
     return(
         <div className="home">
+
             <h1>{user}'s Home</h1>
             <SideBar />
-
             <form>
             <input name="search" type='text' placeholder="Search..." onChange={handleSearch} className="searchBar"/>
             <button type="submit" onClick={submitSearch} style={{ display: 'none' }}/>
@@ -73,21 +77,27 @@ const Home = (props) =>{
             <input type='text' name="text_content" placeholder="Make a post" onChange={makePost}/>
             <button type="submit" onClick={submitPost}>Post</button>
             </form>
-
+{/* 
             {props.posts.map(show => {
-               if(show.author === user){
+               if(show.author === user )
+               {
+                if(props.currentuser !== ''){
                 return(
-                    <div className="postCon">
+                    <div >
+                        <div className="postCon">
                         <div className="post">
-                    <Link to={`/${show.author}`}><h2>{show.author}</h2></Link>
-                    <p>{show.text_content}</p>
-                    <p>{show.date}</p>
-                    </div>
+                        <Link to={`/${show.author}`}><h2>{show.author}</h2></Link>
+                        <p>{show.text_content}</p>
+                        <p>{show.date}</p>
+                        </div>
+                        </div>
+                   
                     </div>
                 )
-               }
-            })}
+            }
            
+               }
+            })} */}
         </div>
     )
 }

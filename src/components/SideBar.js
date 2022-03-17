@@ -14,8 +14,8 @@ const SideBar = (props) => {
 
     const logoutAcc = (e) =>{
         e.preventDefault()
-        props.logOut()
         history.push('/login')
+        props.logOut()
     }
 
 console.log(props)

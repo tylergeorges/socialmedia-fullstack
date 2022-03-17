@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
-import { getProfile } from "../actions/actions"
+import { getProfile, followAccount} from "../actions/actions"
 import { useEffect, useState } from "react"
 import SideBar from "./SideBar"
 const mapStateToProps = (state) =>({
     posts: state.posts,
-    users: state.users
+    users: state.users,
+    following: state.following
 })
 
 const UserProfile = (props) =>{
@@ -22,12 +23,13 @@ const UserProfile = (props) =>{
 
     const followUser = (e) =>{
         e.preventDefault()
+
+        props.followAccount(userprof)
     }
 
     const handleSearch = (e) =>{
         e.preventDefault()
         setSearch(e.target.value)
-
     }
 
     const submitSearch = (e) =>{
@@ -51,7 +53,8 @@ const UserProfile = (props) =>{
             </form>
 
         <h1>{userprof}'s Profile</h1>
-        <button >Follow</button>
+        {props.following.map(users => users !== userprof ? <button onClick={followUser}>Follow</button> : <button>Unfollow</button>)}
+
         {props.posts.map(posts => {
                 if(posts.author === userprof){
 
@@ -72,4 +75,4 @@ const UserProfile = (props) =>{
     )
 }
 
-export default connect(mapStateToProps, {getProfile})(UserProfile)
+export default connect(mapStateToProps, {getProfile, followAccount})(UserProfile)
