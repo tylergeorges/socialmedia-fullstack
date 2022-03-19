@@ -59,6 +59,7 @@ export default function reducer(state=initialState, action){
             ...state, isLoading: false, users: filArr, error: '', currentuser:action.payload.currentuser, all_posts: state.all_posts, my_posts: state.my_posts, usersearched: action.payload.data.user
         }
         case GET_PROFILE:
+            console.log(action.payload)
             return{
                 ...state, isLoading: false, users: state.users, error: '', currentuser: state.currentuser, posts: state.all_posts, my_posts: state.my_posts, usersearched: state.usersearched, userprof: action.payload.data.userProf
             }

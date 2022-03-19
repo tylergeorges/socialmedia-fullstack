@@ -33,8 +33,10 @@ const Post = (props) =>{
         props.makePost(post)
         // console.log(post)
     }
+
+ 
     return(
-        <div >
+        <div className="postFormCon">
             <form autoComplete="off" className="postForm">
             <input type='text' name="text_content" placeholder="Make a post" onChange={makePost} className="createPost"/>
             <button type="submit" onClick={submitPost} className="postSubmit">Post</button>

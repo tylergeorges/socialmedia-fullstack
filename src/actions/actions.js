@@ -17,6 +17,15 @@ export const FETCH_SM_FAIL = "FETCH_SM_FAIL"
 export const FETCH_SM_HOME = "FETCH_SM_HOME"
 export const FETCH_LOG_OUT = "FETCH_LOG_OUT"
 
+
+const instance = axios.create({ 
+    baseURL:'http://localhost:2020',   
+    timeout: 1000,  
+    headers :{ 'token': 'Bearer ' + 'token' } 
+
+})
+
+
 export const fetchSm = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
 
@@ -37,8 +46,8 @@ export const addAccount = (acc) => (dispatch) =>{
     console.log(acc)
     console.log(acc)
 
-    axios 
-    .post('http://localhost:2020/register', acc, {withCredentials: true})
+    instance 
+    .post('/register', acc, {withCredentials: true})
     .then(data =>{
         dispatch({type: ADD_ACCOUNT, payload: data})
     })
@@ -65,8 +74,8 @@ export const fetchRegister = (acc) => (dispatch) =>{
 
 export const fetchLogin = (acc) =>  (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    axios 
-    .post('http://localhost:2020/login', acc, {withCredentials: true})
+    instance 
+    .post('/login', acc, {withCredentials: true})
     // .then(data =>console.log(data.data.user))
     // .then(async data => await console.log (data))
     .then( data =>{dispatch  ({type: FETCH_SM_LOGIN,  payload: data.data.user})})
@@ -77,8 +86,8 @@ export const fetchLogin = (acc) =>  (dispatch) =>{
 }
 export const getLogin = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    axios 
-    .get('http://localhost:2020/login',  {withCredentials: true})
+    instance 
+    .get('/login',  {withCredentials: true})
     // .then(data =>console.log(data.data.user))
     // .then(data =>console.log(data))
     .then(data =>{dispatch ({type: GET_LOGIN, payload: data.data.logged_in})})
@@ -90,11 +99,11 @@ export const getLogin = (acc) => (dispatch) =>{
 
 export const fetchHome = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    axios 
-    .get(`http://localhost:2020/home`, {withCredentials: true})
+    instance 
+    .get(`/home`, {withCredentials: true})
     .then(data =>{
         dispatch({type: FETCH_SM_HOME, payload: data})
-        console.log(data)
+        // console.log(data)
         // .data.logged_in
     })
     .catch(err=>{
@@ -105,8 +114,8 @@ export const fetchHome = () => (dispatch) =>{
 export const makePost = (post) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     // console.log(post)
-    axios 
-    .post(`http://localhost:2020/home`, post, {withCredentials: true})
+    instance 
+    .post(`/home`, post, {withCredentials: true})
     .then(data =>{dispatch({type: CREATE_POST, payload: data})})
         .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
@@ -114,35 +123,32 @@ export const makePost = (post) => (dispatch) =>{
     })
 }
 
-export const searchUser = (user) => async (dispatch) =>{
+export const searchUser = (user) =>  (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-try{
-   const data = await axios.get(`http://localhost:2020/search/${user}`,{withCredentials: true})
-   await dispatch({type: SEARCH_USER, payload: data})
-console.log(data)
-}
-    catch(err){
+   instance
+   .get(`/search/${user}`,{withCredentials: true})
+   .then(data => dispatch({type: SEARCH_USER, payload: data}))
+    .catch(err =>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
-    }
-}
-export const getProfile = (user) => (dispatch) =>{
-    dispatch({type: FETCH_SM_START})
-    console.log(user)
-    axios 
-    .get(`http://localhost:2020/profile/${user}`, {withCredentials: true})
-    .then(data =>{dispatch({type: GET_PROFILE, payload: data})
-        console.log(data)})
-    .catch(err=>{
-        dispatch({type: FETCH_SM_FAIL, payload: err.message})
-        console.log(err.message)
+
     })
 }
-export const followAccount = (user) => (dispatch) =>{
+
+
+export const getProfile = (user) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    console.log(user)
-    axios 
-    .post(`http://localhost:2020/profile/${user}`, user, {withCredentials: true})
+
+    instance.get(`/profile/${user}`,{withCredentials: true})
+    .then(data =>{dispatch({type: GET_PROFILE, payload: data})})
+    .catch(err=>{dispatch({type: FETCH_SM_FAIL, payload: err.message})
+    console.log(err.message)
+    })
+}
+export const followAccount = (useracc) => (dispatch) =>{
+    dispatch({type: FETCH_SM_START})
+    // console.log(useracc)
+    instance.put(`/profile/${useracc}`, {username: useracc}, {withCredentials: true})
     .then(data =>{dispatch({type: FOLLOW_ACCOUNT, payload: data})})
     // .then(data =>console.log(data))
     .catch(err=>{
@@ -152,8 +158,8 @@ export const followAccount = (user) => (dispatch) =>{
 }
 export const logOut = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    axios 
-    .post  (`http://localhost:2020/logout`, { } , { withCredentials: true })
+    instance 
+    .post  (`/logout` , { withCredentials: true })
     .then(data =>{dispatch({type: FETCH_LOG_OUT, payload: data})
         console.log(data)})
     .catch(err=>{

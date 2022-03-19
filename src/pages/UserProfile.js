@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
-import { getProfile, followAccount} from "../actions/actions"
+import { getProfile, followAccount, fetchHome} from "../actions/actions"
 import { useEffect, useState } from "react"
 import SideBar from "../components/SideBar"
 import NavBar from "../components/NavBar"
@@ -18,8 +18,12 @@ const mapStateToProps = (state) =>({
 const UserProfile = (props) =>{
     let userprof = props.match.params.user
     console.log(props)
+
+    const [followCheck, setFollowCheck] = useState(false)
+
     useEffect(() =>{
-    props.getProfile(props.match.params.user)
+        // props.fetchHome(props.currentuser)
+        props.getProfile(props.match.params.user)
     },[])
 
     const followUser = (e) =>{
@@ -27,7 +31,7 @@ const UserProfile = (props) =>{
         props.followAccount(userprof)
     }
 
-  console.log(props.currentuser)
+  console.log(props)
     return(
         <div className="userProf">
             <SideBar/>
@@ -35,21 +39,15 @@ const UserProfile = (props) =>{
             
 
         <h1>{userprof}'s Profile</h1>
-        <h3>Following: {props.following.length}</h3>
-        <h3>Followers: {props.followers.length} </h3>
+        <h3>Following: {props.users.map(user => user.username === userprof ? user.following.length : '')}</h3>
+        <h3>Followers: {props.users.map(user => user.username === userprof ? user.followers.length : '')} </h3>
         {/* {props.following.map(users => users !== userprof ? <button onClick={followUser}>Follow</button> : <button>Unfollow</button>)} */}
-        {props.following.map(users => {
-            return(
-                <div>
-                    <button onClick={followUser}>Follow</button>
-                </div>
-            )
-        } )}
-        {/* <button onClick={followUser}>Follow</button>  */}
+
+     {userprof !== props.currentuser && props.following.map(users => users !== userprof) ? <button onClick={followUser}>Follow</button> : userprof !== props.currentuser ? <button >Unfollow</button> : ''} 
+
 
         {props.all_posts.map(posts => {
             if(posts.author === userprof){
-
             return(
                 <div className="postCon">
                     <div className="post">
@@ -66,4 +64,4 @@ const UserProfile = (props) =>{
     )
 }
 
-export default connect(mapStateToProps, {getProfile, followAccount})(UserProfile)
+export default connect(mapStateToProps, {getProfile, followAccount, fetchHome})(UserProfile)

@@ -21,7 +21,7 @@ const Home = (props) =>{
     const history = useHistory()
 
     useEffect(()=>{
-        props.fetchHome(user)
+        props.fetchHome()
     }, [])
 
 
