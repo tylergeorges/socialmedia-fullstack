@@ -64,19 +64,22 @@ const Register = (props) =>{
 
     console.log(props)
     return(
-        <div>
-            <h1>Register</h1>
-        <form>
-           { blank ? <p>One or more fields is blank!</p> : ''}
-           { exists ? <p>Username already exists!</p> : ''}
-            <input type='text' placeholder="username" name="username"onChange={handleUser} id="username"/>
+        <div className="formCon">
+        <div className="formConCenter">
+            <div className="formHeaderCon">
+                <h1 id="formHeader">Register</h1>
+            </div>
 
-            <input type='text' placeholder="password" name="password"onChange={handlePass} id="password"/>
-            <button type="submit" onClick={handleSubmit}>Register</button>
-
-        </form>
-        <Link to="login">Login</Link>
+            <form className="formAccInfo">
+                <input type='text' placeholder="username" onChange={handleUser} id="username" />
+                <input type='text' placeholder="password" onChange={handlePass} id="password" />
+                <button type="submit" className="formSubmit" onClick={handleSubmit} >Register</button>
+                <br />
+                <Link to="/login">Login</Link>
+                <br />
+            </form>
         </div>
+    </div>
     )
 }
 

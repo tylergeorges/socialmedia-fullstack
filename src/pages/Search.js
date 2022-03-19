@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
-import { searchUser } from "../actions/actions"
+import { searchUser , fetchHome} from "../actions/actions"
 import { useEffect } from "react"
 import { useState } from "react"
-import SideBar from "./SideBar"
+import SideBar from "../components/SideBar"
 import { useHistory } from "react-router-dom"
+import NavBar from "../components/NavBar"
 
 const mapStateToProps = (state) =>({
     currentuser: state.currentuser,
-    posts: state.posts,
+    all_posts: state.all_posts,
     users: state.users,
     usersearched: state.usersearched
 })
@@ -22,6 +23,7 @@ const Search = (props) =>{
     const [newResults, setSearchResults] = useState('')
 
     useEffect(() =>{
+        props.fetchHome(props.currentuser)
         if(newResults === ''){
             props.searchUser(results)
 
@@ -30,7 +32,9 @@ const Search = (props) =>{
             props.history.push(`/search/${newResults}`)
         }
         // console.log(props.searchUser(results))
-    },[newResults])
+    },[])
+
+
 
     const handleSearch = (e) =>{
         e.preventDefault()
@@ -50,19 +54,15 @@ const Search = (props) =>{
 
     }
     return(
-        <div>
+        <div className="searchPage">
             <SideBar/>
-                        
+            <NavBar />         
 
            
             <h1>Search results for "{props.usersearched}"</h1>
-            
-            <form>
-            <input name="search" type='text' placeholder="Search..." onChange={handleSearch} className="searchBar"/>
-            <button type="submit" onClick={submitSearch} style={{ display: 'none' }}/>
-            </form>
-
-            {props.posts.map(show => {
+         
+            {props.all_posts.map(show => {
+                // console.log(show)
                if(show.author === props.usersearched){
                 return(
                     <div className="postCon">
@@ -79,4 +79,4 @@ const Search = (props) =>{
     )
 }
 
-export default connect(mapStateToProps, {searchUser})(Search)
+export default connect(mapStateToProps, {searchUser , fetchHome})(Search)

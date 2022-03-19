@@ -2,34 +2,59 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { connect } from "react-redux"
-import { logOut } from "../actions/actions"
+import { fetchHome, logOut } from "../actions/actions"
 
 const mapStateToProps = (state) => ({
-    currentuser: state.currentuser
+    currentuser: state.currentuser,
+    isLoading: state.isLoading
 })
 
 const SideBar = (props) => {
 
-  const history = useHistory()
+    const history = useHistory()
 
-    const logoutAcc = (e) =>{
+    const logoutAcc = (e) => {
         e.preventDefault()
-        history.push('/login')
+
+        if(props.isLoading === false){
+
+            history.push('/login')
+        }
         props.logOut()
     }
 
-console.log(props)
+    useEffect(() =>{
+        // props.fetchHome(props.currentuser)
+    },[])
 
-    return(
+    console.log(props)
+    return (
         <div className="sidebar">
-            <ion-icon name="enter-outline"></ion-icon>
+        <div className="toProfile">
+        <Link to={`/${props.currentuser}`} id="profile">
+            <h3 id="displayname">{props.currentuser}</h3>
+            
+            <p id="displayhandle">{`@${props.currentuser}`}</p>
+            </Link>
+        </div>
+
             <div className="sidebarbtns">
-            <Link to="/home" id="home">Home</Link>
-            <Link to={`/${props.currentuser}`} id="profile">Profile</Link>
-            <Link to="/login" id="logout" onClick={logoutAcc}>Logout</Link>
+
+                <li>
+                    <Link to="/home" id="home"><h3>Home</h3></Link>
+                </li>
+
+                <li>
+                    <Link to={`/${props.currentuser}`} id="profile"><h3>Profile</h3></Link>
+                </li>
+
+                <li>
+                    <Link to="/login" id="logout" onClick={logoutAcc}><h3>Logout</h3></Link>
+                </li>
             </div>
+            
         </div>
     )
 }
 
-export default connect (mapStateToProps, {logOut})(SideBar)
+export default connect(mapStateToProps, { logOut , fetchHome})(SideBar)
