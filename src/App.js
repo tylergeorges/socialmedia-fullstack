@@ -13,9 +13,10 @@ import Notifications from './pages/Notifactions';
 
 function App(props) {
 
-  useEffect(()=>{
-    props.fetchHome()
-  },[])
+  // useEffect(()=>{
+  //   props.fetchHome()
+  // },[])
+
   return (
     <div className="App">
       <Switch>

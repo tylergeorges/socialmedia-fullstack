@@ -24,10 +24,9 @@ const SideBar = (props) => {
     }
 
     useEffect(() =>{
-        // props.fetchHome(props.currentuser)
+        props.fetchHome()
     },[])
 
-    console.log(props)
     return (
         <div className="sidebar">
         <div className="toProfile">

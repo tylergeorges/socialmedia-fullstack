@@ -17,18 +17,17 @@ const mapStateToProps = (state) =>({
 
 const UserProfile = (props) =>{
     let userprof = props.match.params.user
-    console.log(props)
 
     const [followCheck, setFollowCheck] = useState(false)
 
     useEffect(() =>{
-        // props.fetchHome(props.currentuser)
         props.getProfile(props.match.params.user)
     },[])
 
     const followUser = (e) =>{
         e.preventDefault()
         props.followAccount(userprof)
+        setFollowCheck(!followCheck)
     }
 
   console.log(props)
@@ -43,7 +42,11 @@ const UserProfile = (props) =>{
         <h3>Followers: {props.users.map(user => user.username === userprof ? user.followers.length : '')} </h3>
         {/* {props.following.map(users => users !== userprof ? <button onClick={followUser}>Follow</button> : <button>Unfollow</button>)} */}
 
-     {userprof !== props.currentuser && props.following.map(users => users !== userprof) ? <button onClick={followUser}>Follow</button> : userprof !== props.currentuser ? <button >Unfollow</button> : ''} 
+
+     {/* //! follow button */}
+     {props.match.params.user !== props.currentuser && props.following.map(users => users !== props.match.params.user) && followCheck === true ? <button onClick={followUser}>Follow</button> : ''} 
+     
+     {props.match.params.user !== props.currentuser && props.following.map(users => props.match.params.user === users) && followCheck === false ? <button>Unfollow</button> : ''} 
 
 
         {props.all_posts.map(posts => {
@@ -59,7 +62,6 @@ const UserProfile = (props) =>{
             )
         }
         })}
-        <Link to="/home">Home</Link>
         </div>
     )
 }

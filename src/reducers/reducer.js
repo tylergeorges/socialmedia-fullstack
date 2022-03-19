@@ -42,7 +42,6 @@ export default function reducer(state=initialState, action){
             ...state, isLoading:false, users: [...state.users.users, action.payload], error: '',currentuser: state.currentuser
         }
         case FETCH_SM_HOME:
-        console.log(action.payload.data)
             return{
                 ...state, isLoading: false, error: '', currentuser:action.payload.data.logged_in.username, my_posts: action.payload.data.logged_in.my_posts, all_posts:action.payload.data.all_posts, users: action.payload.data.users, following: action.payload.data.logged_in.following
             }
