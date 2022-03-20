@@ -27,7 +27,6 @@ const CreatePost = (props) =>{
 
             setPost({text_content: e.target.value, author: user})
        
-        console.log(e.target.value.length)
     }
 
     const submitPost = (e) =>{

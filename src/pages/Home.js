@@ -32,7 +32,6 @@ const Home = (props) =>{
         <div className="home">
             <NavBar />
             <h1>{user}'s Home</h1>
-            <SideBar />
            
         <div className="pagesBg">
            <CreatePost placeholder="Create a post..."/>
@@ -59,6 +58,9 @@ const Home = (props) =>{
                 }))
             })}
          
+         <div className="postside">
+            <SideBar />
+            </div>
         </div>
     )
 

@@ -30,17 +30,15 @@ const SideBar = (props) => {
 
     return (
         <div className="sidebar">
+        <div className="innersidebar">
+            <div className="sidebarbtns">
         <div className="toProfile">
-            
         <Link to={`/${props.currentuser}`} id="profile">
             <h3 id="displayname">{props.currentuser}</h3>
             
             <p id="displayhandle">{`@${props.currentuser}`}</p>
             </Link>
-        </div>
-
-            <div className="sidebarbtns">
-
+            </div>
                 <li>
                     <Link to="/home" ><h3 id="home">Home</h3></Link>
                 </li>
@@ -56,8 +54,6 @@ const SideBar = (props) => {
                 <li>
                     <Link to="/login"  onClick={logoutAcc}><h3 id="logout">Logout</h3></Link>
                 </li>
-            </div>
-            
             <div className="followinglist">
                 <h3>Following</h3>
                 {props.following.map(users => {
@@ -65,6 +61,9 @@ const SideBar = (props) => {
                         <li>{users}</li>
                     )
                 })}
+            </div>
+            </div>
+            
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import { makePost } from "../actions/actions"
+import {  postReply } from "../actions/actions"
 
 const { useEffect, useState } = require("react")
 const { connect } = require("react-redux")
@@ -20,6 +20,7 @@ const ReplyPost = (props) =>{
             author: user,
         }
     )
+    
     const [post, setPost] = useState(postContent)
 
     const makePost = (e) =>{
@@ -27,13 +28,13 @@ const ReplyPost = (props) =>{
 
             setPost({text_content: e.target.value, author: user})
        
-        console.log(e.target.value.length)
     }
 
-    const submitPost = (e) =>{
+    const submitReply = (e) =>{
         e.preventDefault()
         if(post.text_content != '' && post.text_content !== null){
-            props.makePost(post)
+
+            props.postReply(props.postId, post)
         }
         // console.log(post)
     }
@@ -43,10 +44,10 @@ const ReplyPost = (props) =>{
             <form autoComplete="off" className="postForm">
             <input type='text' name="text_content" placeholder="Reply..." onChange={makePost} className="createPost" id="createpost"/>
             {/* {post !== '' ? document.querySelector('.postSubmit').classList.toggle('.showbtn'): ''} */}
-            <button type="submit" onClick={submitPost} className="postSubmit" id="postsub">Post</button>
+            <button type="submit" onClick={submitReply} className="postSubmit" id="postsub">Reply</button>
             </form>
         </div>
     )
 }
 
-export default connect(mapStateToProps, {makePost})(ReplyPost)
+export default connect(mapStateToProps, {postReply})(ReplyPost)

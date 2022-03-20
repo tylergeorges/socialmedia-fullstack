@@ -194,9 +194,9 @@ export const getPost = (postId) => (dispatch) =>{
 }
 export const postReply = (postId, post) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    console.log(postId)
+    console.log(postId, post)
 
-    instance.post(`/post/${postId}`,  {post: post}, {withCredentials: true})
+    instance.post(`/post/${postId}`, post, {withCredentials: true})
     .then(data =>{dispatch({type: REPLY_POST, payload: data})})
     .then(data =>console.log(data))
     .catch(err=>{
