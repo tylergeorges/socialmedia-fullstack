@@ -12,6 +12,8 @@ export const FOLLOW_ACCOUNT = "FOLLOW_ACCOUNT"
 export const GET_LOGIN = "GET_LOGIN"
 export const USER_NOTFI = "USER_NOTFI"
 export const UNFOLLOW_ACC = "UNFOLLOW_ACC"
+export const GET_POST = "GET_POST"
+export const REPLY_POST = "REPLY_POST"
 
 export const FETCH_SM_START = "FETCH_SM_START"
 export const FETCH_SM_SUCCESS = "FETCH_SM_SUCCESS"
@@ -174,6 +176,29 @@ export const userNotfi = () => (dispatch) =>{
     instance.get(`/notifications`, {withCredentials: true})
     // .then(data =>console.log(data))
     .then(data =>{dispatch({type: USER_NOTFI, payload: data})})
+    .catch(err=>{
+        dispatch({type: FETCH_SM_FAIL, payload: err.message})
+        console.log(err.message)
+    })
+}
+export const getPost = (postId) => (dispatch) =>{
+    dispatch({type: FETCH_SM_START})
+    console.log(postId)
+    instance.get(`/post/${postId}`,  postId, {withCredentials: true})
+    .then(data =>{dispatch({type: GET_POST, payload: data})})
+    .then(data =>console.log(data))
+    .catch(err=>{
+        dispatch({type: FETCH_SM_FAIL, payload: err.message})
+        console.log(err.message)
+    })
+}
+export const postReply = (postId, post) => (dispatch) =>{
+    dispatch({type: FETCH_SM_START})
+    console.log(postId)
+
+    instance.post(`/post/${postId}`,  {post: post}, {withCredentials: true})
+    .then(data =>{dispatch({type: REPLY_POST, payload: data})})
+    .then(data =>console.log(data))
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)

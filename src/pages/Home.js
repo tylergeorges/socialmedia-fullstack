@@ -5,7 +5,7 @@ import { fetchHome, makePost, searchUser} from "../actions/actions"
 import { useHistory } from "react-router-dom"
 import SideBar from "../components/SideBar"
 import NavBar from '../components/NavBar'
-import Post from "../components/Post"
+import CreatePost from "../components/CreatePost"
 const mapStateToProps = (state) =>({
     currentuser: state.currentuser,
     my_posts: state.my_posts,
@@ -25,8 +25,9 @@ const Home = (props) =>{
     }, [])
 
 
-    console.log(props)
-  
+    
+    let filArr = props.following.filter(users => users )
+    
     return(
         <div className="home">
             <NavBar />
@@ -34,23 +35,30 @@ const Home = (props) =>{
             <SideBar />
            
         <div className="pagesBg">
-           <Post />
+           <CreatePost placeholder="Create a post..."/>
            </div>
-            {props.all_posts.map(show => {
-            if(show.author === props.currentuser || props.following.map(folUser => show.author === folUser)){
+    
+            {filArr.map(users => {
                 return(
-                    <div>
-                        <div className="postCon">
-                        <div className="post">
-                        <Link to={`/${show.author}`}><h2>{show.author}</h2></Link>
-                        <p>{show.text_content}</p>
-                        <p>{show.date}</p>
+                props.all_posts.map(posts =>  {
+                    if(posts.author === users || posts.author === props.currentuser){
+                    return(
+                        <div>
+                            <Link to={`/${posts.author}/post/${posts._id}`}>
+                            <div className="postCon">
+                            <div className="post">
+                                <Link to={`/${posts.author}`}><h2>{posts.author}</h2></Link>
+                                <p>{posts.text_content}</p>
+                                <p>{posts.date}</p>
+                            </div>
+                            </div>
+                            </Link>
                         </div>
-                        </div>
-                    </div>
-                )
-            }
+                    )
+                }
+                }))
             })}
+         
         </div>
     )
 

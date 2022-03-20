@@ -12,7 +12,7 @@ const mapStateToProps = (state) =>({
     isLoading: state.isLoading,
     error: state.error
 })
-const Post = (props) =>{
+const ReplyPost = (props) =>{
     let user = props.currentuser
     const [postContent] = useState(
         {
@@ -41,7 +41,7 @@ const Post = (props) =>{
     return(
         <div className="postFormCon">
             <form autoComplete="off" className="postForm">
-            <input type='text' name="text_content" placeholder="Make a post..." onChange={makePost} className="createPost" id="createpost"/>
+            <input type='text' name="text_content" placeholder="Reply..." onChange={makePost} className="createPost" id="createpost"/>
             {/* {post !== '' ? document.querySelector('.postSubmit').classList.toggle('.showbtn'): ''} */}
             <button type="submit" onClick={submitPost} className="postSubmit" id="postsub">Post</button>
             </form>
@@ -49,4 +49,4 @@ const Post = (props) =>{
     )
 }
 
-export default connect(mapStateToProps, {makePost})(Post)
+export default connect(mapStateToProps, {makePost})(ReplyPost)

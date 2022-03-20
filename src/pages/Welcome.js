@@ -4,11 +4,12 @@ import Register from "./Register"
 const Welcome = (props) =>{
 
     return(
-        <div>
-            <h1>Welcome</h1>
+        <div className="welcomePage">
+            <h1 >Welcome</h1>
 
-            <Link to="login">Login</Link>
-            <Link to="register">Register</Link>
+            <Link to="login" id="loginlink">Login</Link>
+            <br />
+            <Link to="register" id="reglink">Register</Link>
         </div>
     )
 }

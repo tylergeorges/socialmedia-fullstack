@@ -6,7 +6,8 @@ import { fetchHome, logOut } from "../actions/actions"
 
 const mapStateToProps = (state) => ({
     currentuser: state.currentuser,
-    isLoading: state.isLoading
+    isLoading: state.isLoading,
+    following: state.following
 })
 
 const SideBar = (props) => {
@@ -57,6 +58,14 @@ const SideBar = (props) => {
                 </li>
             </div>
             
+            <div className="followinglist">
+                <h3>Following</h3>
+                {props.following.map(users => {
+                    return(
+                        <li>{users}</li>
+                    )
+                })}
+            </div>
         </div>
     )
 }
