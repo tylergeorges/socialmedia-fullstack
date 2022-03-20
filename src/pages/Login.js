@@ -55,7 +55,7 @@ const Login = (props) => {
                     <input type='text' placeholder="password" onChange={handleInput} id="password" />
                     <button type="submit" className="formSubmit" onClick={handleSubmit} >Login</button>
                     <br />
-                    <Link to="register">Register</Link>
+                    <Link to="register" id="reglink">Register</Link>
                     <br />
                 </form>
             </div>

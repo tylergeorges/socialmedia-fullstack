@@ -10,9 +10,11 @@ const NavBar = (props) =>{
 
 
     return(
-        <div className="navbar">
+    <div className="navbarcon">
+        <nav className="navbar">
             <SearchBar />
-        </div>
+        </nav>
+    </div>
     )
 }
 

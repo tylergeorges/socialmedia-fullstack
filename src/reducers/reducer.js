@@ -1,4 +1,4 @@
-import { FETCH_SM_START, FETCH_SM_FAIL, FETCH_SM_SUCCESS, FETCH_SM_LOGIN, FETCH_SM_REGISTER, FETCH_SM_HOME, CREATE_POST, SEARCH_USER, GET_PROFILE, ADD_ACCOUNT, FETCH_LOG_OUT, FOLLOW_ACCOUNT, GET_LOGIN} from "../actions/actions"
+import { FETCH_SM_START, FETCH_SM_FAIL, FETCH_SM_SUCCESS, FETCH_SM_LOGIN, FETCH_SM_REGISTER, FETCH_SM_HOME, CREATE_POST, SEARCH_USER, GET_PROFILE, ADD_ACCOUNT, FETCH_LOG_OUT, FOLLOW_ACCOUNT, GET_LOGIN, USER_NOTFI, UNFOLLOW_ACC} from "../actions/actions"
 const initialState = ({
     currentuser: '',
     isLoading: false,
@@ -9,7 +9,8 @@ const initialState = ({
     following: [],
     followers: [],
     usersearched: '',
-    userprof: ''
+    userprof: '',
+    notifications: [], 
 })
 
 export default function reducer(state=initialState, action){
@@ -75,6 +76,17 @@ export default function reducer(state=initialState, action){
         return{
             ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following: [...state.following, action.payload.data.following]
         }
+        case USER_NOTFI:
+            console.log(action.payload)
+            return{
+                ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following: state.following, notifications: [action.payload.data.notifications, ...state.notifications]
+            }
+        case UNFOLLOW_ACC:
+            console.log(action.payload)
+            
+            return{
+                ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following:  state.following, followers: state.followers
+            }
         default: return state
     }
 }

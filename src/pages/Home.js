@@ -36,10 +36,10 @@ const Home = (props) =>{
         <div className="pagesBg">
            <Post />
            </div>
-            {props.my_posts !== '' ? props.my_posts.map(show => {
-               {
+            {props.all_posts.map(show => {
+            if(show.author === props.currentuser || props.following.map(folUser => show.author === folUser)){
                 return(
-                    <div >
+                    <div>
                         <div className="postCon">
                         <div className="post">
                         <Link to={`/${show.author}`}><h2>{show.author}</h2></Link>
@@ -47,12 +47,10 @@ const Home = (props) =>{
                         <p>{show.date}</p>
                         </div>
                         </div>
-                   
                     </div>
                 )
-           
-               }
-            }): 'MAKE A POST OR FOLLOW USERS!'}
+            }
+            })}
         </div>
     )
 

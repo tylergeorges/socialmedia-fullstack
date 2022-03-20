@@ -1,10 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&family=Poppins&display=swap');
+*{
+  font-family: 'Fredoka', sans-serif;
+font-family: 'Poppins', sans-serif;
+color: white;
+}
+:root {
+  --main-bg-color:  #1F1C2C;
+  --lighter-bg-color:   #353241;
+  ---button-color: #7F00FF;
+}
+body{
+  /* margin-top: 4%; */
+  /* background-color: #7f5a83; */
+ background-color: #1F1C2C;
+  
 
+}
 
 .post{
-  background-color: white;
+  background-color: var(--lighter-bg-color);
+  color: white;
   width: 30%;
   margin: 3px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .postCon{
   display: flex;
@@ -14,15 +32,17 @@
   align-items: center;
 }
 
-
+.notfiHeader{
+  text-align: center;
+}
 .searchBar{
   display: flex;
- vertical-align: top;
   width: 250px;
   height: 40px;
   border: none;
-  background-color: #e4e6eb;
+  background-color: #1F1C2C;
   border-radius: 20px;
+  color: white;
 }
 .searchBar:focus{
   outline: none;
@@ -33,13 +53,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 40px;
   border: none;
-  background-color: #e4e6eb;
+  background-color: #1F1C2C;
   text-align: center;
   margin: 0.5rem;
   border-radius: 20px;
+  
 }
+.fa {
+  color: var(--lighter-bg-color);
+   margin: 0.5rem;
+   
+ }
 /* .searchDropDown{
   position: absolute;
   display: inline-block;
@@ -51,12 +76,11 @@
 .searchDropDownUser{
 
 } */
-.fa {
-  color: grey;
-   margin: 0.5rem;
- }
 .createPost:focus{
   outline: none;
+}
+.createPost{
+  color: white;
 }
 .postSubmit{
 position: absolute;
@@ -68,6 +92,10 @@ width: 100px;
 border-radius: 20px;
 margin-left: 80%;
 }
+
+input:focus{
+  outline: none;
+}
 .postForm input[type="text"]{
   justify-self: start;
   width: 75%;
@@ -78,8 +106,8 @@ margin-left: 80%;
 }
 .postForm{
   width: 30%;
-  
-  background-color: white;
+
+  background-color: var(--lighter-bg-color);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -100,76 +128,116 @@ margin-left: 80%;
 }
 
 .sidebar {
-  display: flex;
-  flex-wrap: wrap;
   position: fixed;
   left: 16%;
   top: 15%;
-  margin-right: 500px;
-flex-direction: column;
+  /* margin-right: 500px; */
+  text-decoration: none;
+  
 }
-
+a:not(#loginlink, #reglink){
+  text-decoration: none; 
+}
 .home{
+  margin-top: 4%;
   text-align: center;
+  position: relative;
+  /* background-color: #21253e; */
 
-  position: relative;
-  background-color: #e4e6eb;
+
 }
+
+
 .userProf{
+  margin-top: 4%;
   text-align: center;
   position: relative;
-  background-color: #e4e6eb;
+  /* background-color: #e4e6eb; */
 }
 
 .sidebarbtns{
+  display: flex;
+  flex-direction: column;
   position: relative;
-  width: 300px;
+  width: 100%;
   /* height: 400px; */
-  text-align: center;
   border-radius: 20px;
-  background-color: white;
+  /* background-color: white; */
+  background-color: #353241;
 }
 
 #home{
-  align-items: center;
-  color: black;
+  position: relative;
+  color: white;
   font-size: 20px;
-  text-align: center;
-  width: 100px;
   height: 40px;
   border: none;
-  text-align: center;
+  margin: 0;
   border-radius: 20px;
-  text-decoration: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  transition: 300ms ease;
+ 
 }
+#home:hover{
+  background-color: rgba(53,50,65, 0.1  );
+  filter: brightness(10);
+}
+
+#logout:hover{
+  background-color: rgba(53,50,65, 0.1  );
+  filter: brightness(10);
+}
+#notifications:hover{
+  background-color: rgba(53,50,65, 0.1  );
+  filter: brightness(10);
+}
+#profile:hover{
+  background-color: rgba(53,50,65, 0.1  );
+  filter: brightness(10);
+}
+
 #logout{
-  color: black;
+  position: relative;
+  color: white;
   font-size: 20px;
-  text-align: center;
-  width: 100px;
   height: 40px;
   border: none;
-  text-align: center;
+
+  margin: 0;
   border-radius: 20px;
-  text-decoration: none;
-  align-items: center;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  transition: 300ms ease;
+
 }
 
 #profile{
-  align-items: center;
-  color: black;
+  position: relative;
+  color: white;
   font-size: 20px;
-  text-align: center;
-  width: 100px;
   height: 40px;
   border: none;
   text-align: center;
-  border-radius: 20px;
-  text-decoration: none;
-}
+  margin: 0;
+  transition: 300ms ease;
 
+
+}
+#notifications{
+  position: relative;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  border: none;
+  text-align: center;
+  text-decoration: inherit;
+  margin: 0;
+  transition: 300ms ease;
+
+}
 .formCon{ 
-  background: linear-gradient(to right, #ff9966, #ff5e62); 
+  background: var(--main-bg-color); 
   min-height: 100vh;
   position: relative;
   text-align: center;
@@ -181,10 +249,10 @@ flex-direction: column;
 .formConCenter{
   border-radius: 20px;
   position: relative;
-  background-color: white;
+  background-color: var(--lighter-bg-color);
   bottom: 50;
   display: flex;
-  border:  1px solid #dadce1;
+  border:  1px solid var(--main-bg-color);
   text-align: center;
   flex-wrap: wrap;
   align-items: center;
@@ -194,6 +262,7 @@ flex-direction: column;
 }
 
 #username{
+  color: black;
   text-indent: 5px;
   margin: 5px;
   width: 100%;
@@ -205,6 +274,7 @@ flex-direction: column;
 }
 
 #password{
+  color: black;
   text-indent: 5px;
   margin: 5px;
   width: 100%;
@@ -214,15 +284,24 @@ flex-direction: column;
   border: none;
   background-color: #dadce1;
 }
+#password:focus{
+border: none;
+outline: none;
+}
+#username:focus{
+border: none;
+outline: none;
+}
 
 .formSubmit{
   color: white;
   border: none;
-  background: linear-gradient(to right, #ff9966, #ff5e62); 
+  background: var(---button-color);
   height: 50px;
   width:  100%;
   font-size: 20px;
   border-radius: 30px;
+  margin-top: 5px;
 }
 
 .formAccInfo{
@@ -234,17 +313,72 @@ flex-direction: column;
   justify-items: center;
 }
 .searchPage{
+  position: relative;
   text-align: center;
-  background-color: #dadce1;
-}
+  margin-top: 4%;
+  }
 .formHeaderCon{
   position: absolute;
   display: flex;
   top: 0;
-  border-bottom: 1px solid #dadce1;
+  border-bottom: 1px solid #1F1C2C;
   width: 100%;
 }
-
+.followbtn{
+  border: none;
+  border: 1px solid#7F00FF;
+  color: white;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  background-color: transparent;
+  transition: 0.3s ease;
+}
+.followbtn:hover{
+  border: none;
+  border: 1px solid#7F00FF;
+  color: white;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  background-color: #7F00FF;
+}
+.searchpagecardcon{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+.searchpagecard{
+  position: relative;
+  background-color: var(--lighter-bg-color);
+  width: 15%;
+ border-radius: 20px;
+}
+.unfollowbtn{
+  border: none;
+  background-color: #7F00FF;
+  color: white;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  transition: 0.3s ease;
+}
+.hidebtn{
+  display: none;
+}
+.unfollowbtn:hover{
+  border: none;
+  background-color: red;
+  color: white;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+}
+h1{
+  color: white;
+}
 #formHeader{
   position: relative;
     display: flex;
@@ -259,7 +393,7 @@ li{
 
 .toProfile{
   position: relative;
-  background-color: white;
+  background-color: #353241;
   width: 300px;
   height: 70px;
   align-items: center;
@@ -276,9 +410,16 @@ li{
   margin: 0%;
 }
 .navbar{
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #353241;
   height: 60px;
+  width: 100%;
+  top: 0;
+}
+.navbarcon{
+  position: relative;
+  z-index: 1;
 }

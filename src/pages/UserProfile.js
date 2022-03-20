@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, Redirect, useHistory } from "react-router-dom"
 import { connect } from "react-redux"
-import { getProfile, followAccount, fetchHome} from "../actions/actions"
+import { getProfile, followAccount, fetchHome, unfollowAcc} from "../actions/actions"
 import { useEffect, useState } from "react"
 import SideBar from "../components/SideBar"
 import NavBar from "../components/NavBar"
+import Notifictions from "./Notifictions"
 const mapStateToProps = (state) =>({
     currentuser: state.currentuser,
     my_posts: state.my_posts,
@@ -14,23 +15,39 @@ const mapStateToProps = (state) =>({
     isLoading: state.isLoading,
     userProf: state.userProf
 })
-
 const UserProfile = (props) =>{
     let userprof = props.match.params.user
 
+    //! if follow check is true then we are not following the user
     const [followCheck, setFollowCheck] = useState(false)
 
+    const history = useHistory()
     useEffect(() =>{
         props.getProfile(props.match.params.user)
+        props.fetchHome()
     },[])
 
     const followUser = (e) =>{
         e.preventDefault()
         props.followAccount(userprof)
-        setFollowCheck(!followCheck)
+    }
+    const unfollowUser = (e) =>{
+        e.preventDefault()
+        props.unfollowAcc(userprof)
+    }
+
+    const mouseEnter = (e) =>{
+        e.preventDefault()
+        document.getElementById('unfollowbtn').textContent = "Unfollow"
+    }
+    const mouseExit = (e) =>{
+        e.preventDefault()
+        document.getElementById('unfollowbtn').textContent = "Following"
     }
 
   console.log(props)
+  let filArr = props.following.filter(users => users === props.match.params.user)
+  console.log(filArr)
     return(
         <div className="userProf">
             <SideBar/>
@@ -39,15 +56,18 @@ const UserProfile = (props) =>{
 
         <h1>{userprof}'s Profile</h1>
         <h3>Following: {props.users.map(user => user.username === userprof ? user.following.length : '')}</h3>
-        <h3>Followers: {props.users.map(user => user.username === userprof ? user.followers.length : '')} </h3>
+        <h3 >Followers: {props.users.map(user => user.username === userprof ? user.followers.length : '')} </h3>
         {/* {props.following.map(users => users !== userprof ? <button onClick={followUser}>Follow</button> : <button>Unfollow</button>)} */}
 
 
-     {/* //! follow button */}
-     {props.match.params.user !== props.currentuser && props.following.map(users => users !== props.match.params.user) && followCheck === true ? <button onClick={followUser}>Follow</button> : ''} 
-     
-     {props.match.params.user !== props.currentuser && props.following.map(users => props.match.params.user === users) && followCheck === false ? <button>Unfollow</button> : ''} 
+     {/* //* follow button */}
+     {
+     props.match.params.user !== props.currentuser && filArr.length ? 
+     <button onMouseEnter={mouseEnter}onMouseLeave={mouseExit} id="unfollowbtn" className="unfollowbtn" onClick={unfollowUser}>Following</button>: 
+     <button onClick={followUser} className="followbtn">Follow</button> 
+      } 
 
+  
 
         {props.all_posts.map(posts => {
             if(posts.author === userprof){
@@ -66,4 +86,5 @@ const UserProfile = (props) =>{
     )
 }
 
-export default connect(mapStateToProps, {getProfile, followAccount, fetchHome})(UserProfile)
+
+export default connect(mapStateToProps, {getProfile, followAccount, fetchHome, unfollowAcc })(UserProfile)

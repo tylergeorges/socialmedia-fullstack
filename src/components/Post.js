@@ -24,22 +24,26 @@ const Post = (props) =>{
 
     const makePost = (e) =>{
         e.preventDefault()
-        setPost({text_content: e.target.value, author: user})
+
+            setPost({text_content: e.target.value, author: user})
+       
+        console.log(e.target.value.length)
     }
 
     const submitPost = (e) =>{
         e.preventDefault()
-
-        props.makePost(post)
+        if(post.text_content != '' && post.text_content !== null){
+            props.makePost(post)
+        }
         // console.log(post)
     }
-
- 
+   
     return(
         <div className="postFormCon">
             <form autoComplete="off" className="postForm">
-            <input type='text' name="text_content" placeholder="Make a post" onChange={makePost} className="createPost"/>
-            <button type="submit" onClick={submitPost} className="postSubmit">Post</button>
+            <input type='text' name="text_content" placeholder="Make a post..." onChange={makePost} className="createPost" id="createpost"/>
+            {/* {post !== '' ? document.querySelector('.postSubmit').classList.toggle('.showbtn'): ''} */}
+            <button type="submit" onClick={submitPost} className="postSubmit" id="postsub">Post</button>
             </form>
         </div>
     )

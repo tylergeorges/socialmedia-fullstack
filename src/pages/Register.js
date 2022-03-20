@@ -75,7 +75,7 @@ const Register = (props) =>{
                 <input type='text' placeholder="password" onChange={handlePass} id="password" />
                 <button type="submit" className="formSubmit" onClick={handleSubmit} >Register</button>
                 <br />
-                <Link to="/login">Login</Link>
+                <Link to="/login" id="loginlink">Login</Link>
                 <br />
             </form>
         </div>

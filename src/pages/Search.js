@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import { searchUser , fetchHome} from "../actions/actions"
 import { useEffect } from "react"
@@ -60,7 +60,18 @@ const Search = (props) =>{
 
            
             <h1>Search results for "{props.usersearched}"</h1>
-         
+            {props.users.map(users => {
+                if(props.usersearched === users.username){
+                return(
+                    <div className="searchpagecardcon">
+                        <Link className="searchpagecard" to={`/${users.username}`}>
+                        <h3>{users.username}</h3>
+                        <p>@{users.username}</p>
+                        </Link>
+                    </div>
+                )
+            }
+            })}
             {props.all_posts.map(show => {
                 // console.log(show)
                if(show.author === props.usersearched){
