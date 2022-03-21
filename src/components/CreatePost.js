@@ -1,8 +1,10 @@
 import { makePost } from "../actions/actions"
 
+import io from "socket.io-client"
+const socket = io.connect('http://localhost:2020')
+
 const { useEffect, useState } = require("react")
 const { connect } = require("react-redux")
-
 const mapStateToProps = (state) =>({
     currentuser: state.currentuser,
     my_posts: state.my_posts,
@@ -14,18 +16,24 @@ const mapStateToProps = (state) =>({
 })
 const CreatePost = (props) =>{
     let user = props.currentuser
+
     const [postContent] = useState(
         {
             text_content: '',
             author: user,
         }
-    )
-    const [post, setPost] = useState(postContent)
-
+        )
+        const [post, setPost] = useState(postContent)
+        
+        useEffect(() =>{
+            socket.on('text_content', ({text_content, author}) =>{
+                setPost([...post,   {text_content, author}])
+            })
+        },[])
     const makePost = (e) =>{
         e.preventDefault()
 
-            setPost({text_content: e.target.value, author: user})
+        setPost({text_content: e.target.value, author: user})
        
     }
 
@@ -33,6 +41,7 @@ const CreatePost = (props) =>{
         e.preventDefault()
         if(post.text_content != '' && post.text_content !== null){
             props.makePost(post)
+
         }
         // console.log(post)
     }

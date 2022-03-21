@@ -1,4 +1,6 @@
 import {  postReply } from "../actions/actions"
+import io from "socket.io-client"
+const socket = io.connect('http://localhost:2020')
 
 const { useEffect, useState } = require("react")
 const { connect } = require("react-redux")
@@ -23,6 +25,11 @@ const ReplyPost = (props) =>{
     
     const [post, setPost] = useState(postContent)
 
+    useEffect(() =>{
+        socket.on('text_content', ({text_content, author}) =>{
+            setPost([...post,   {text_content, author}])
+        })
+    },[])
     const makePost = (e) =>{
         e.preventDefault()
 

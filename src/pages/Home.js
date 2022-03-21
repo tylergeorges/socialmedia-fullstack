@@ -24,7 +24,6 @@ const Home = (props) =>{
         props.fetchHome()
     }, [])
 
-
     
     let filArr = props.following.filter(users => users )
     
@@ -43,15 +42,15 @@ const Home = (props) =>{
                     if(posts.author === users || posts.author === props.currentuser){
                     return(
                         <div>
-                            <Link to={`/${posts.author}/post/${posts._id}`}>
                             <div className="postCon">
                             <div className="post">
+                            <Link to={`/${posts.author}/post/${posts._id}`}>
                                 <Link to={`/${posts.author}`}><h2>{posts.author}</h2></Link>
                                 <p>{posts.text_content}</p>
                                 <p>{posts.date}</p>
-                            </div>
-                            </div>
                             </Link>
+                            </div>
+                            </div>
                         </div>
                     )
                 }
