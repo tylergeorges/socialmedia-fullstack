@@ -32,6 +32,39 @@ body{
   align-items: center;
 }
 
+.postdropdown{
+  position: relative;
+  margin-left: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.fa-ellipsis{
+  font-size: 20px;
+  position: absolute;
+  margin-left: 90%;
+  background: none;
+  border: none;
+}
+.deletepost{
+  border: none;
+  color: red;
+  background: none;
+}
+.fa-trash-o{
+  border: none;
+  color: red;
+}
+.dropdown{
+  position: absolute;
+  display: flex;
+  width: 10%;
+  background-color: #1F1C2C;
+  margin-left: 90%;
+  margin-top: 10%;
+  box-shadow: white;
+}
+
+
 .notfiHeader{
   text-align: center;
 }

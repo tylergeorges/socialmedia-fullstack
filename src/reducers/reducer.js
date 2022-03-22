@@ -1,4 +1,4 @@
-import { FETCH_SM_START, FETCH_SM_FAIL, FETCH_SM_SUCCESS, FETCH_SM_LOGIN, FETCH_SM_REGISTER, FETCH_SM_HOME, CREATE_POST, SEARCH_USER, GET_PROFILE, ADD_ACCOUNT, FETCH_LOG_OUT, FOLLOW_ACCOUNT, GET_LOGIN, USER_NOTFI, UNFOLLOW_ACC, GET_POST, REPLY_POST} from "../actions/actions"
+import { FETCH_SM_START, FETCH_SM_FAIL, FETCH_SM_SUCCESS, FETCH_SM_LOGIN, FETCH_SM_REGISTER, FETCH_SM_HOME, CREATE_POST, SEARCH_USER, GET_PROFILE, ADD_ACCOUNT, FETCH_LOG_OUT, FOLLOW_ACCOUNT, GET_LOGIN, USER_NOTFI, UNFOLLOW_ACC, GET_POST, REPLY_POST, DELETE_POST} from "../actions/actions"
 const initialState = ({
     currentuser: '',
     isLoading: false,
@@ -85,6 +85,11 @@ export default function reducer(state=initialState, action){
                 ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following:  state.following, followers: state.followers
             }
         case REPLY_POST:
+            return{
+                ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following:  state.following, followers: state.followers  
+            }
+        case DELETE_POST:
+            console.log(action.payload)
             return{
                 ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following:  state.following, followers: state.followers  
             }

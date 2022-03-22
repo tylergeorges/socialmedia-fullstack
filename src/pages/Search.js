@@ -78,9 +78,11 @@ const Search = (props) =>{
                 return(
                     <div className="postCon">
                         <div className="post">
-                    <Link to={`/${show.author}`}><h2>{show.author}</h2></Link>
+                        <Link to={`/${show.author}/post/${show._id}`}>
+                    <h2><Link to={`/${show.author}`}>{show.author}</Link></h2>
                     <p>{show.text_content}</p>
                     <p>{show.date}</p>
+                    </Link>
                     </div>
                     </div>
                 )

@@ -35,10 +35,13 @@ const Login = (props) => {
         e.preventDefault()
 
         loginAcc({ username: user, password: pass })
-         props.fetchLogin({ username: user, password: pass })
         // if(props.currentuser !== ''){
-        // }
-        props.history.push(`/home`)
+            // }
+            if(user && pass !== ''){
+                
+            props.fetchLogin({ username: user, password: pass })
+            props.history.push(`/home`)
+        }
     }
 
 

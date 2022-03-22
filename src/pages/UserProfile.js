@@ -63,9 +63,11 @@ const UserProfile = (props) =>{
             return(
                 <div className="postCon">
                     <div className="post">
+                    <Link to={`/${posts.author}/post/${posts._id}`}>
                     <h2>{posts.author}</h2>
                     <p>{posts.text_content}</p>
                     <p>{posts.date}</p>
+                    </Link>
                     </div>
                 </div>
             )

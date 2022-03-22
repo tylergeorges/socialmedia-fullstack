@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 import { fetchHome, getPost, postReply } from "../actions/actions"
 import CreatePost from "../components/CreatePost"
 import NavBar from "../components/NavBar"
@@ -30,7 +31,7 @@ const Post = (props) =>{
                 <div>
                 <div className="replypostCon">
                     <div className="mainPost">
-                    <h2>{posts.author}</h2>
+                    <h2><Link to={`/${posts.author}`}>{posts.author}</Link></h2>
                     <p>{posts.text_content}</p>
                     <p>{posts.date}</p>
                     </div>

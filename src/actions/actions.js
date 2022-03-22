@@ -14,6 +14,7 @@ export const USER_NOTFI = "USER_NOTFI"
 export const UNFOLLOW_ACC = "UNFOLLOW_ACC"
 export const GET_POST = "GET_POST"
 export const REPLY_POST = "REPLY_POST"
+export const DELETE_POST = "DELETE_POST"
 
 export const FETCH_SM_START = "FETCH_SM_START"
 export const FETCH_SM_SUCCESS = "FETCH_SM_SUCCESS"
@@ -21,13 +22,14 @@ export const FETCH_SM_FAIL = "FETCH_SM_FAIL"
 export const FETCH_SM_HOME = "FETCH_SM_HOME"
 export const FETCH_LOG_OUT = "FETCH_LOG_OUT"
 
+const token = ('; '+ document.cookie).split(`; token=`).pop().split(';')[0];
+
 const instance = axios.create({ 
     baseURL:'http://localhost:2020',   
     timeout: 1000,  
-    headers :{ 'token': 'Bearer ' + 'token' } 
-
+    Cookies :{ 'token': `Bearer ${token}`},
+    withCredentials: true,
 })
-
 
 export const fetchSm = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
@@ -120,6 +122,16 @@ export const makePost = (post) => (dispatch) =>{
     instance 
     .post(`/home`, post, {withCredentials: true})
     .then(data =>{dispatch({type: CREATE_POST, payload: data})})
+        .catch(err=>{
+        dispatch({type: FETCH_SM_FAIL, payload: err.message})
+        console.log(err.message)
+    })
+}
+export const deletePost = (postId) => (dispatch) =>{
+    dispatch({type: FETCH_SM_START})
+    instance 
+    .delete(`/home/${postId.postId}`,  postId , {withCredentials: true})
+    .then(data =>{dispatch({type: DELETE_POST, payload: data})})
         .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
