@@ -36,7 +36,6 @@ const Login = (props) => {
         loginAcc({ username: user, password: pass })
         // if(props.currentuser !== ''){
             // }
-            console.log(user, pass)
             if(user && pass !== ''){
                 
             props.fetchLogin({ username: user, password: pass })

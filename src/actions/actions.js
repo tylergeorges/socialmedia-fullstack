@@ -72,8 +72,8 @@ export const fetchRegister = (acc) => (dispatch) =>{
 
 export const fetchLogin = (acc) =>  (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    instance 
-    .post('/login', acc, {withCredentials: true})
+    axios 
+    .post('https://socialmedia-fullstack.herokuapp.com/login', acc, {withCredentials: true})
     .then( data =>{dispatch  ({type: FETCH_SM_LOGIN,  payload: data.data.user})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
@@ -82,8 +82,8 @@ export const fetchLogin = (acc) =>  (dispatch) =>{
 }
 export const getLogin = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    instance 
-    .get('/login',  {withCredentials: true})
+    axios 
+    .get('https://socialmedia-fullstack.herokuapp.com/login',  {withCredentials: true})
     .then(data =>{dispatch ({type: GET_LOGIN, payload: data.data.logged_in})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})

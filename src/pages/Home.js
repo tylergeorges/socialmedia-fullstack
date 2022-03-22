@@ -23,6 +23,7 @@ const Home = (props) =>{
 
     const [show, setShow] = useState(false)
     const [postid, setpostid] = useState('')
+    
     useEffect(()=>{
         props.fetchHome()
     }, [])
