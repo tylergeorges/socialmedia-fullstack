@@ -77,7 +77,7 @@ export const fetchRegister = (acc) => (dispatch) =>{
 
 export const fetchLogin = (acc) =>  (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    axios 
+    instance 
     .post('/login', acc, {withCredentials: true})
     // .then(data =>console.log(data.data.user))
     // .then(async data => await console.log (data))
@@ -102,7 +102,7 @@ export const getLogin = (acc) => (dispatch) =>{
 
 export const fetchHome = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    axios 
+    instance 
     .get(`/home`, {withCredentials: true})
     .then(data =>{
         dispatch({type: FETCH_SM_HOME, payload: data})
