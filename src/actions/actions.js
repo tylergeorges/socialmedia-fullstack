@@ -25,7 +25,7 @@ export const FETCH_LOG_OUT = "FETCH_LOG_OUT"
 const token = ('; '+ document.cookie).split(`; token=`).pop().split(';')[0];
 
 const instance = axios.create({ 
-    baseURL:'http://localhost:2020',   
+    baseURL:'https://socialmedia-fullstack.herokuapp.com',   
     timeout: 1000,  
     Cookies :{ 'token': `Bearer ${token}`},
     withCredentials: true,
