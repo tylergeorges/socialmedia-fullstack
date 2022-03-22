@@ -14,7 +14,6 @@ const Login = (props) => {
     const [acc, loginAcc] = useState('')
     const [madeAcc, setMadeAccs] = useState()
     const history = useHistory()
-    console.log(props.currentuser)
 
     const handleInput = (e) => {
         e.preventDefault()
@@ -37,6 +36,7 @@ const Login = (props) => {
         loginAcc({ username: user, password: pass })
         // if(props.currentuser !== ''){
             // }
+            console.log(user, pass)
             if(user && pass !== ''){
                 
             props.fetchLogin({ username: user, password: pass })
