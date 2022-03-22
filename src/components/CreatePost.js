@@ -1,7 +1,5 @@
 import { makePost } from "../actions/actions"
 
-import io from "socket.io-client"
-const socket = io.connect('https://socialmedia-fullstack.herokuapp.com/')
 
 const { useEffect, useState } = require("react")
 const { connect } = require("react-redux")
@@ -25,11 +23,6 @@ const CreatePost = (props) =>{
         )
         const [post, setPost] = useState(postContent)
         
-        useEffect(() =>{
-            socket.on('text_content', ({text_content, author}) =>{
-                setPost([...post,   {text_content, author}])
-            })
-        },[])
     const makePost = (e) =>{
         e.preventDefault()
 
