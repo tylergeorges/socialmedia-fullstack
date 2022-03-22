@@ -28,7 +28,6 @@ const instance = axios.create({
     baseURL:'https://socialmedia-fullstack.herokuapp.com',   
     timeout: 1000,  
     Cookies :{ 'token': `Bearer ${token}`},
-    withCredentials: true,
 })
 
 export const fetchSm = () => (dispatch) =>{
@@ -94,7 +93,7 @@ export const getLogin = () => (dispatch) =>{
 export const fetchHome = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     instance 
-    .get(`/home`, {withCredentials: true})
+    .get(`/home`)
     .then(data =>{
         dispatch({type: FETCH_SM_HOME, payload: data})})
     .catch(err=>{
