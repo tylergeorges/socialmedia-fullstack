@@ -34,8 +34,8 @@ const instance = axios.create({
 export const fetchSm = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
 
-    axios 
-    .get('https://socialmedia-fullstack.herokuapp.com', {withCredentials: true})
+    instance 
+    .get('/', {withCredentials: true})
     .then(data =>{
         dispatch({type: FETCH_SM_SUCCESS, payload: data})})
     .catch(err=>{
