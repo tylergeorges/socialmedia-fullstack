@@ -25,9 +25,10 @@ export const FETCH_LOG_OUT = "FETCH_LOG_OUT"
 const token = ('; '+ document.cookie).split(`; token=`).pop().split(';')[0];
 
 const instance = axios.create({ 
-    baseURL:'https://socialmedia-fullstack.herokuapp.com',   
+    baseURL:'http://localhost:2020',   
     timeout: 1000,  
     Cookies :{ 'token': `Bearer ${token}`},
+    withCredentials: true,
 })
 
 export const fetchSm = () => (dispatch) =>{
@@ -36,7 +37,9 @@ export const fetchSm = () => (dispatch) =>{
     instance 
     .get('/', {withCredentials: true})
     .then(data =>{
-        dispatch({type: FETCH_SM_SUCCESS, payload: data})})
+        dispatch({type: FETCH_SM_SUCCESS, payload: data})
+        console.log(data)
+    })
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
@@ -45,6 +48,8 @@ export const fetchSm = () => (dispatch) =>{
 
 export const addAccount = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
+    console.log(acc)
+    console.log(acc)
 
     instance 
     .post('/register', acc, {withCredentials: true})
@@ -58,6 +63,7 @@ export const addAccount = (acc) => (dispatch) =>{
 }
 export const fetchRegister = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
+
     instance 
     .get('/register', {withCredentials: true})
     .then(data =>{
@@ -71,18 +77,22 @@ export const fetchRegister = (acc) => (dispatch) =>{
 
 export const fetchLogin = (acc) =>  (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    axios 
-    .post('https://socialmedia-fullstack.herokuapp.com/login', acc)
+    instance 
+    .post('/login', acc, {withCredentials: true})
+    // .then(data =>console.log(data.data.user))
+    // .then(async data => await console.log (data))
     .then( data =>{dispatch  ({type: FETCH_SM_LOGIN,  payload: data.data.user})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
     })
 }
-export const getLogin = () => (dispatch) =>{
+export const getLogin = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    axios 
-    .get('https://socialmedia-fullstack.herokuapp.com/login')
+    instance 
+    .get('/login',  {withCredentials: true})
+    // .then(data =>console.log(data.data.user))
+    // .then(data =>console.log(data))
     .then(data =>{dispatch ({type: GET_LOGIN, payload: data.data.logged_in})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
@@ -93,9 +103,12 @@ export const getLogin = () => (dispatch) =>{
 export const fetchHome = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     instance 
-    .get(`/home`)
+    .get(`/home`, {withCredentials: true})
     .then(data =>{
-        dispatch({type: FETCH_SM_HOME, payload: data})})
+        dispatch({type: FETCH_SM_HOME, payload: data})
+        // console.log(data)
+        // .data.logged_in
+    })
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
@@ -103,6 +116,7 @@ export const fetchHome = () => (dispatch) =>{
 }
 export const makePost = (post) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
+    // console.log(post)
     instance 
     .post(`/home`, post, {withCredentials: true})
     .then(data =>{dispatch({type: CREATE_POST, payload: data})})
@@ -181,7 +195,6 @@ export const getPost = (postId) => (dispatch) =>{
     instance
     .get(`/post/${postId}`,  postId, {withCredentials: true})
     .then(data =>{dispatch({type: GET_POST, payload: data})})
-    .then(data =>console.log(data))
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
@@ -189,12 +202,10 @@ export const getPost = (postId) => (dispatch) =>{
 }
 export const postReply = (postId, post) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    console.log(postId, post)
 
     instance
     .post(`/post/${postId}`, post, {withCredentials: true})
     .then(data =>{dispatch({type: REPLY_POST, payload: data})})
-    .then(data =>console.log(data))
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
@@ -205,7 +216,7 @@ export const logOut = () => (dispatch) =>{
     instance 
     .post  (`/logout` , { withCredentials: true })
     .then(data =>{dispatch({type: FETCH_LOG_OUT, payload: data})
-        console.log(data)})
+        })
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)

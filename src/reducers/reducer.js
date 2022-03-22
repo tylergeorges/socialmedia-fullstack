@@ -80,7 +80,6 @@ export default function reducer(state=initialState, action){
                 ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following:  state.following, followers: state.followers
             }
         case GET_POST:
-            console.log(action.payload.data.post)
             return{
                 ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following:  state.following, followers: state.followers
             }
@@ -89,7 +88,6 @@ export default function reducer(state=initialState, action){
                 ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following:  state.following, followers: state.followers  
             }
         case DELETE_POST:
-            console.log(action.payload)
             return{
                 ...state, isLoading: false, users: state.users, error: '', currentuser:state.currentuser, posts: state.posts, usersearched: state.usersearched, following:  state.following, followers: state.followers  
             }
