@@ -1,7 +1,7 @@
 import { makePost } from "../actions/actions"
 
 import io from "socket.io-client"
-const socket = io.connect('http://localhost:2020')
+const socket = io.connect('https://socialmedia-fullstack.herokuapp.com/')
 
 const { useEffect, useState } = require("react")
 const { connect } = require("react-redux")
