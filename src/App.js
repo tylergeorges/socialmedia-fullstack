@@ -17,7 +17,6 @@ function App(props) {
   // useEffect(()=>{
   //   props.fetchHome()
   // },[])
-
   return (
       <Switch>
         <Route  path="/register" component={Register}/>
