@@ -25,7 +25,7 @@ export const FETCH_LOG_OUT = "FETCH_LOG_OUT"
 const token = ('; '+ document.cookie).split(`; token=`).pop().split(';')[0];
 
 const instance = axios.create({ 
-    baseURL:'http://localhost:2020',   
+    baseURL:'https://socialmedia-fullstack.herokuapp.com',   
     timeout: 1000,  
     Cookies :{ 'token': `Bearer ${token}`},
     withCredentials: true,
@@ -35,11 +35,9 @@ export const fetchSm = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
 
     axios 
-    .get('http://localhost:2020', {withCredentials: true})
+    .get('https://socialmedia-fullstack.herokuapp.com', {withCredentials: true})
     .then(data =>{
-        dispatch({type: FETCH_SM_SUCCESS, payload: data})
-        console.log(data)
-    })
+        dispatch({type: FETCH_SM_SUCCESS, payload: data})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
@@ -48,8 +46,6 @@ export const fetchSm = () => (dispatch) =>{
 
 export const addAccount = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    console.log(acc)
-    console.log(acc)
 
     instance 
     .post('/register', acc, {withCredentials: true})
@@ -63,11 +59,8 @@ export const addAccount = (acc) => (dispatch) =>{
 }
 export const fetchRegister = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    console.log(acc)
-    console.log(acc)
-
-    axios 
-    .get('http://localhost:2020/register', {withCredentials: true})
+    instance 
+    .get('/register', {withCredentials: true})
     .then(data =>{
         dispatch({type: FETCH_SM_REGISTER, payload: data})
     })
@@ -81,20 +74,16 @@ export const fetchLogin = (acc) =>  (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     instance 
     .post('/login', acc, {withCredentials: true})
-    // .then(data =>console.log(data.data.user))
-    // .then(async data => await console.log (data))
     .then( data =>{dispatch  ({type: FETCH_SM_LOGIN,  payload: data.data.user})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
     })
 }
-export const getLogin = (acc) => (dispatch) =>{
+export const getLogin = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     instance 
     .get('/login',  {withCredentials: true})
-    // .then(data =>console.log(data.data.user))
-    // .then(data =>console.log(data))
     .then(data =>{dispatch ({type: GET_LOGIN, payload: data.data.logged_in})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
@@ -107,10 +96,7 @@ export const fetchHome = () => (dispatch) =>{
     instance 
     .get(`/home`, {withCredentials: true})
     .then(data =>{
-        dispatch({type: FETCH_SM_HOME, payload: data})
-        // console.log(data)
-        // .data.logged_in
-    })
+        dispatch({type: FETCH_SM_HOME, payload: data})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
@@ -118,7 +104,6 @@ export const fetchHome = () => (dispatch) =>{
 }
 export const makePost = (post) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    // console.log(post)
     instance 
     .post(`/home`, post, {withCredentials: true})
     .then(data =>{dispatch({type: CREATE_POST, payload: data})})
@@ -154,7 +139,8 @@ export const searchUser = (user) =>  (dispatch) =>{
 export const getProfile = (user) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
 
-    instance.get(`/profile/${user}`,{withCredentials: true})
+    instance
+    .get(`/profile/${user}`,{withCredentials: true})
     .then(data =>{dispatch({type: GET_PROFILE, payload: data})})
     .catch(err=>{dispatch({type: FETCH_SM_FAIL, payload: err.message})
     console.log(err.message)
@@ -162,10 +148,9 @@ export const getProfile = (user) => (dispatch) =>{
 }
 export const followAccount = (useracc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    // console.log(useracc)
-    instance.put(`/profile/${useracc}`, {username: useracc}, {withCredentials: true})
+    instance
+    .put(`/profile/${useracc}`, {username: useracc}, {withCredentials: true})
     .then(data =>{dispatch({type: FOLLOW_ACCOUNT, payload: data})})
-    // .then(data =>console.log(data))
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
@@ -173,10 +158,9 @@ export const followAccount = (useracc) => (dispatch) =>{
 }
 export const unfollowAcc = (useracc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    // console.log(useracc)
-    instance.put(`/profile/${useracc}/unfollow`, {username: useracc}, {withCredentials: true})
+    instance
+    .put(`/profile/${useracc}/unfollow`, {username: useracc}, {withCredentials: true})
     .then(data =>{dispatch({type: UNFOLLOW_ACC, payload: data})})
-    // .then(data =>console.log(data))
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
         console.log(err.message)
@@ -184,9 +168,8 @@ export const unfollowAcc = (useracc) => (dispatch) =>{
 }
 export const userNotfi = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    // console.log(useracc)
-    instance.get(`/notifications`, {withCredentials: true})
-    // .then(data =>console.log(data))
+    instance
+    .get(`/notifications`, {withCredentials: true})
     .then(data =>{dispatch({type: USER_NOTFI, payload: data})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
@@ -196,7 +179,8 @@ export const userNotfi = () => (dispatch) =>{
 export const getPost = (postId) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     console.log(postId)
-    instance.get(`/post/${postId}`,  postId, {withCredentials: true})
+    instance
+    .get(`/post/${postId}`,  postId, {withCredentials: true})
     .then(data =>{dispatch({type: GET_POST, payload: data})})
     .then(data =>console.log(data))
     .catch(err=>{
@@ -208,7 +192,8 @@ export const postReply = (postId, post) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     console.log(postId, post)
 
-    instance.post(`/post/${postId}`, post, {withCredentials: true})
+    instance
+    .post(`/post/${postId}`, post, {withCredentials: true})
     .then(data =>{dispatch({type: REPLY_POST, payload: data})})
     .then(data =>console.log(data))
     .catch(err=>{
