@@ -22,24 +22,28 @@ const UserProfile = (props) =>{
 
     //! if followed set to true
     const [followed, setUserFollowed] = useState(false);
+    let filArr = props.following.filter(users => users === props.match.params.user)
+ 
 
 
     const history = useHistory()
     useEffect(() =>{
         props.getProfile(props.match.params.user)
         props.fetchHome()
+        if(filArr){
+            setUserFollowed(followed => !followed)
+        }
     },[followed])
 
 
     const handleclick = (e) =>{
         e.preventDefault()
         setUserFollowed(followed => !followed)
-
     }
 
 
 
-  let filArr = props.following.filter(users => users === props.match.params.user)
+//   let filArr = props.following.filter(users => users === props.match.params.user)
  
     return(
         <div className="userProf">
@@ -51,8 +55,9 @@ const UserProfile = (props) =>{
         <h3>Following: {props.users.map(user => user.username === userprof ? user.following.length : '')}</h3>
         <h3 >Followers: {props.users.map(user => user.username === userprof ? user.followers.length : '')} </h3>
 
-       { !filArr.length && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : null}
-       {filArr.length && !followed !== props.currentuser? <Unfollow userprof={userprof} onClick={handleclick}/>: null}
+        
+       { followed && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : <Unfollow userprof={userprof} onClick={handleclick}/>}
+       {/* {filArr.length && !followed !== props.currentuser? <Unfollow userprof={userprof} onClick={handleclick}/>: null} */}
 
 
 
