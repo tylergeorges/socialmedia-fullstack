@@ -2,6 +2,8 @@ FULLSTACK SOCIAL MEDIA APP
 
 live server: https://peppy-marigold-501d4b.netlify.app/
 
+backend: https://dashboard.heroku.com/apps/socialmedia-fullstack
+
 This is my full stack social media site thats similar to twitter and has user authentication, password encryption, following and unfollowing, posting, replying to posts, deleting posts, searching for users with more features to come! 
 
 BACKEND
