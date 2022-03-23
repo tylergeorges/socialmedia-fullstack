@@ -1,3 +1,5 @@
+FULLSTACK SOCIAL MEDIA APP
+
 live server: https://peppy-marigold-501d4b.netlify.app/
 
 This is my full stack social media site thats similar to twitter and has user authentication, password encryption, posting, following and unfollowing, replying to posts, searching for users with more features to come! 
