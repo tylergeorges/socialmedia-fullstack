@@ -6,6 +6,10 @@ import { useHistory } from "react-router-dom"
 import SideBar from "../components/SideBar"
 import NavBar from '../components/NavBar'
 import CreatePost from "../components/CreatePost"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import DropDownBtn from "../components/dropdownbtn"
 
 const mapStateToProps = (state) =>({
     currentuser: state.currentuser,
@@ -42,6 +46,7 @@ const Home = (props) =>{
     
     return(
         <div className="home">
+
             <NavBar />
             <h1>{user}'s Home</h1>
            
@@ -50,17 +55,24 @@ const Home = (props) =>{
            </div>
             {filArr.map(users => {
                 return(
-                props.all_posts.map(posts =>  {
-                    if(posts.author === users || posts.author === props.currentuser){
-                    return(
-                        <div>
+                    props.all_posts.map(posts =>  {
+                        if(posts.author === users || posts.author === props.currentuser){
+                            return(
+                                <div>
                             <div className="postCon">
                             <div className="post">
 
                             <div className="postdropdown">
-                            {props.currentuser === posts.author?  <button className='fa-solid fa-ellipsis' value={posts._id} onClick={handleDropDown}/> : ''}
+                            
+                            {props.currentuser === posts.author ? 
+                            <DropDownBtn icon={<FontAwesomeIcon icon={faEllipsisH} value={posts._id} onClick={handleDropDown} className="ellipsis"/>}>
+                            <div className="dropmenu">
+                            <button onClick={deletePost} value={posts._id} id="delete" className="deletepost">
+                            <i className="fa fa-trash" style={{color: "red"}}/>Delete</button>
+                            </div>
+                            </DropDownBtn>: ''}
           
-                                {show && props.currentuser === posts.author && posts._id && posts._id == postid ?<div className="dropdown"><i className='fa fa-trash-o' style={{color: 'red'}} /> <button onClick={deletePost} value={posts._id} id="delete" className="deletepost">Delete</button></div>  : ''}
+                                {/* {show && props.currentuser === posts.author && posts._id && posts._id == postid ?<div className="dropdown"> </button></div>  : ''} */}
                             </div>
 
                             <Link to={`/${posts.author}/post/${posts._id}`}>

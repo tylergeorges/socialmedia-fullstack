@@ -38,32 +38,44 @@ body{
   display: flex;
   flex-direction: column;
 }
-.fa-ellipsis{
+.ellipsis{
   font-size: 20px;
   position: absolute;
-  margin-left: 90%;
+  margin-left: 40%;
   background: none;
   border: none;
 }
 .deletepost{
-  border: none;
-  color: red;
-  background: none;
-}
-.fa-trash-o{
-  border: none;
-  color: red;
-}
-.dropdown{
   position: absolute;
+  background-color: #1A1920;
   display: flex;
-  width: 10%;
-  background-color: #1F1C2C;
+  width: 30%;
+  height: 30px;
   margin-left: 90%;
   margin-top: 10%;
-  box-shadow: white;
+  border: none;
+  color: red;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transition: 0.2s ease;
 }
-
+/* .dropmenu{
+  position: absolute;
+  background-color: #1A1920;
+  display: flex;
+  width: 30%;
+  margin-left: 90%;
+  margin-top: 10%;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+} */
+.deletepost:hover{
+  background-color: #1A1920;
+  background:rgba(255, 0, 0, 0.2);
+}
 
 .notfiHeader{
   text-align: center;
