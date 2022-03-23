@@ -102,7 +102,7 @@ export const getLogin = (acc) => (dispatch) =>{
 
 export const fetchHome = () => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    axios 
+    instance 
     .get(`/home`, {withCredentials: true})
     .then(data =>{
         dispatch({type: FETCH_SM_HOME, payload: data})
