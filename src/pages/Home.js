@@ -8,7 +8,6 @@ import NavBar from '../components/NavBar'
 import CreatePost from "../components/CreatePost"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import DropDownBtn from "../components/dropdownbtn"
 
 const mapStateToProps = (state) =>({
@@ -43,7 +42,7 @@ const Home = (props) =>{
     }
     
     let filArr = props.following.filter(users => users )
-    
+
     return(
         <div className="home">
 
@@ -72,7 +71,6 @@ const Home = (props) =>{
                             </div>
                             </DropDownBtn>: ''}
           
-                                {/* {show && props.currentuser === posts.author && posts._id && posts._id == postid ?<div className="dropdown"> </button></div>  : ''} */}
                             </div>
 
                             <Link to={`/${posts.author}/post/${posts._id}`}>

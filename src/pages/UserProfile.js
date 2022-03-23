@@ -7,6 +7,9 @@ import NavBar from "../components/NavBar"
 import Notifictions from "./Notifictions"
 import Follow from "../components/follow"
 import Unfollow from "../components/unfollow"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+import DropDownBtn from "../components/dropdownbtn"
 const mapStateToProps = (state) =>({
     currentuser: state.currentuser,
     my_posts: state.my_posts,
@@ -22,10 +25,16 @@ const UserProfile = (props) =>{
 
     //! if followed set to true
     const [followed, setUserFollowed] = useState(false);
+    const [show, setShow] = useState(false)
     let filArr = props.following.filter(users => users === props.match.params.user)
  
-
-
+    const deletePost = (e) =>{
+        e.preventDefault()
+        props.deletePost({postId: e.target.value})
+    }
+    const handleDropDown = (e) =>{
+        setShow(!show)
+    }
     const history = useHistory()
 
     useEffect(() =>{
@@ -55,7 +64,7 @@ const UserProfile = (props) =>{
         <h3 >Followers: {props.users.map(user => user.username === userprof ? user.followers.length : '')} </h3>
 
 
-       {followed && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : <Unfollow userprof={userprof} onClick={handleclick}/>}
+       {followed && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : userprof !== props.currentuser ?  <Unfollow userprof={userprof} onClick={handleclick}/> : null}
        {/* {filArr.length && !followed !== props.currentuser? <Unfollow userprof={userprof} onClick={handleclick}/>: null} */}
 
 
@@ -72,6 +81,17 @@ const UserProfile = (props) =>{
                     <p>{posts.text_content}</p>
                     <p>{posts.date}</p>
                     </Link>
+                    <div className="postdropdown">
+                            
+                            {props.currentuser === posts.author ? 
+                            <DropDownBtn icon={<FontAwesomeIcon icon={faEllipsisH} value={posts._id} onClick={handleDropDown} className="ellipsis"/>}>
+                            <div className="dropmenu">
+                            <button onClick={deletePost} value={posts._id} id="delete" className="deletepost">
+                            <i className="fa fa-trash" style={{color: "red"}}/>Delete</button>
+                            </div>
+                            </DropDownBtn>: ''}
+          
+                            </div>
                     </div>
                 </div>
             )
