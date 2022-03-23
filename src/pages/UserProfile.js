@@ -27,13 +27,15 @@ const UserProfile = (props) =>{
 
 
     const history = useHistory()
+
     useEffect(() =>{
         props.getProfile(props.match.params.user)
         props.fetchHome()
-        if(filArr){
+
+        if(filArr.length){
             setUserFollowed(followed => !followed)
         }
-    },[followed])
+    },[])
 
 
     const handleclick = (e) =>{
@@ -55,8 +57,9 @@ const UserProfile = (props) =>{
         <h3>Following: {props.users.map(user => user.username === userprof ? user.following.length : '')}</h3>
         <h3 >Followers: {props.users.map(user => user.username === userprof ? user.followers.length : '')} </h3>
 
-        
-       { followed && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : <Unfollow userprof={userprof} onClick={handleclick}/>}
+
+       {/* {followed && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : <Unfollow userprof={userprof} onClick={handleclick}/>} */}
+       {userprof === props.currentuser ? null : followed && userprof !== props.currentuser ?  <Unfollow userprof={userprof} onClick={handleclick}/> : <Follow userprof={userprof} onClick={handleclick} />}
        {/* {filArr.length && !followed !== props.currentuser? <Unfollow userprof={userprof} onClick={handleclick}/>: null} */}
 
 
