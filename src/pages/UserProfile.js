@@ -33,7 +33,7 @@ const UserProfile = (props) =>{
         props.fetchHome()
 
         if(filArr.length){
-            setUserFollowed(followed => !followed)
+            setUserFollowed(true)
         }
     },[])
 
