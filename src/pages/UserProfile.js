@@ -58,8 +58,7 @@ const UserProfile = (props) =>{
         <h3 >Followers: {props.users.map(user => user.username === userprof ? user.followers.length : '')} </h3>
 
 
-       {/* {followed && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : <Unfollow userprof={userprof} onClick={handleclick}/>} */}
-       { followed && userprof !== props.currentuser ? <Unfollow userprof={userprof} onClick={handleclick}/> : <Follow userprof={userprof} onClick={handleclick} />}
+       {followed && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : <Unfollow userprof={userprof} onClick={handleclick}/>}
        {/* {filArr.length && !followed !== props.currentuser? <Unfollow userprof={userprof} onClick={handleclick}/>: null} */}
 
 
