@@ -35,7 +35,7 @@ const UserProfile = (props) =>{
         if(filArr.length){
             setUserFollowed(true)
         }
-    },[])
+    },[followed])
 
 
     const handleclick = (e) =>{
