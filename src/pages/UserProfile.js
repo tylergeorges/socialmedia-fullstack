@@ -33,9 +33,9 @@ const UserProfile = (props) =>{
         props.fetchHome()
 
         if(filArr.length){
-            setUserFollowed(true)
+            setUserFollowed(followed => !followed)
         }
-    },[followed])
+    },[])
 
 
     const handleclick = (e) =>{
@@ -59,7 +59,7 @@ const UserProfile = (props) =>{
 
 
        {/* {followed && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : <Unfollow userprof={userprof} onClick={handleclick}/>} */}
-       {userprof === props.currentuser ? null : followed && userprof !== props.currentuser ?  <Unfollow userprof={userprof} onClick={handleclick}/> : <Follow userprof={userprof} onClick={handleclick} />}
+       { followed && userprof !== props.currentuser ? <Unfollow userprof={userprof} onClick={handleclick}/> : <Follow userprof={userprof} onClick={handleclick} />}
        {/* {filArr.length && !followed !== props.currentuser? <Unfollow userprof={userprof} onClick={handleclick}/>: null} */}
 
 
