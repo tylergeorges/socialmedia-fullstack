@@ -13,10 +13,16 @@ React, redux, axios
 UPCOMING FEATURES
 
 --add user profile pictures 
+
 --add user banners
+
 --add private accounts
+
 --add notifications 
+
 --make mobile friendly
+
 --add liking and resharing posts
+
 --add bookmarking
 
