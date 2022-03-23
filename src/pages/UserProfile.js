@@ -32,9 +32,6 @@ const UserProfile = (props) =>{
         props.getProfile(props.match.params.user)
         props.fetchHome()
 
-        if(filArr.length){
-            setUserFollowed(followed => !followed)
-        }
     },[])
 
 
