@@ -26,7 +26,6 @@ const UserProfile = (props) =>{
     //! if followed set to true
     const [followed, setUserFollowed] = useState(false);
     const [show, setShow] = useState(false)
-    let filArr = props.following.filter(users => users === props.match.params.user)
  
     const deletePost = (e) =>{
         e.preventDefault()
@@ -52,6 +51,7 @@ const UserProfile = (props) =>{
 
 
 //   let filArr = props.following.filter(users => users === props.match.params.user)
+let filArr = props.following.filter(users => users === props.match.params.user)
  
     return(
         <div className="userProf">
@@ -64,7 +64,7 @@ const UserProfile = (props) =>{
         <h3 >Followers: {props.users.map(user => user.username === userprof ? user.followers.length : '')} </h3>
 
 
-       {followed && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : userprof !== props.currentuser ?  <Unfollow userprof={userprof} onClick={handleclick}/> : null}
+       {!filArr.length && userprof !== props.currentuser ? <Follow userprof={userprof} onClick={handleclick} /> : userprof !== props.currentuser ?  <Unfollow userprof={userprof} onClick={handleclick}/> : null}
        {/* {filArr.length && !followed !== props.currentuser? <Unfollow userprof={userprof} onClick={handleclick}/>: null} */}
 
 
