@@ -73,50 +73,56 @@ body{
   border-radius: 5px;
 } */
 .welcomePage{
-  min-height: 100vh;
+  min-height: 90vh;
+  display: flex;
   position: relative;
   text-align: center;
-  display: flex;
   align-items: center;
   justify-items: center;
   justify-content: center;
 }
 .weltxtcon{
+  display: flex;
   border-radius: 20px;
   position: relative;
-  bottom: 50;
-  display: flex;
+  /* bottom: 50; */
   text-align: center;
   flex-wrap: wrap;
   align-items: center;
-  width: 500px;
   justify-content: center;
-  height: 500px;
 }
 .welcomelinks{
-    position: absolute;
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     justify-items: center;
+    height: 100%;
+    width: 100%;
 }
-/* .formHeaderCon{
-  position: absolute;
+.formHeaderCon{
+  position: relative;
   display: flex;
   width: 100%;
   margin-bottom: 50%;
-} */
+  text-align: center;
+justify-content: center;
+justify-items: center;
+align-items: center;
+}
 #accountheader{
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 0;
+  justify-items: center;
+  /* top: 0; */
+  /* right: 0; */
+  /* left: 0; */
   text-align: center;
-  right: 0;
-  left: 0;
+  font-size: 30px;
 }
 #tologin{
   color: white;
@@ -159,6 +165,7 @@ body{
   transition: 0.1s ease-in;
   transform: translateY(-20px);
 }
+
 .arrow-down-register {
   position: absolute;
   width: 0; 
@@ -177,8 +184,6 @@ body{
 }
 #tologin:hover{
   background-color: var(---button-color);
-  /* border-left: 0 solid var(---button-color); */
-  /* border-top-left-radius: 0%; */
 }
 #tologin:hover .arrow-down-login{
   visibility: visible;

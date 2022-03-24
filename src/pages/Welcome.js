@@ -6,11 +6,12 @@ const Welcome = (props) =>{
         <div className="welcomePage">
         <div className="weltxtcon">
 
+
+            <nav className="welcomelinks">
+                
             <div className="formheadercon">
                 <h1 id="accountheader">Welcome</h1>
             </div>
-
-            <nav className="welcomelinks">
             
             <NavLink to="login" id="tologin">Login
             <div className="arrow-down-login"/>
