@@ -1,15 +1,26 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import Register from "./Register"
 
 const Welcome = (props) =>{
-
     return(
         <div className="welcomePage">
-            <h1 >Welcome</h1>
+        <div className="weltxtcon">
 
-            <Link to="login" id="loginlink">Login</Link>
+            <div className="formheadercon">
+                <h1 id="accountheader">Welcome</h1>
+            </div>
+
+            <nav className="welcomelinks">
+            
+            <NavLink to="login" id="tologin">Login
+            <div className="arrow-down-login"/>
+            </NavLink>
             <br />
-            <Link to="register" id="reglink">Register</Link>
+            <NavLink to="register" id="toregister">Register
+            <div className="arrow-down-register"/>
+            </NavLink>
+            </nav>
+        </div>
         </div>
     )
 }

@@ -72,6 +72,127 @@ body{
   justify-content: center;
   border-radius: 5px;
 } */
+.welcomePage{
+  min-height: 100vh;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+.weltxtcon{
+  border-radius: 20px;
+  position: relative;
+  bottom: 50;
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 500px;
+  justify-content: center;
+  height: 500px;
+}
+.welcomelinks{
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+/* .formHeaderCon{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  margin-bottom: 50%;
+} */
+#accountheader{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  text-align: center;
+  right: 0;
+  left: 0;
+}
+#tologin{
+  color: white;
+  border: none;
+  border: 1px solid var(---button-color);
+  background-color: var(--main-bg-color);
+  width: 150%;
+  font-size: 40px;
+  border-radius: 50px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 300ms ease;
+  z-index: 1;
+}
+#toregister{
+  color: white;
+  border: none;
+  border: 1px solid red;
+  width: 150%;
+  font-size: 40px;
+  border-radius: 50px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 300ms ease;
+}
+.arrow-down-login {
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  margin-right: 80%;
+  margin-top: 50%;
+  border-top: 20px solid var(---button-color);
+  opacity: 0%;
+  transition: 0.1s ease-in;
+  transform: translateY(-20px);
+}
+.arrow-down-register {
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  margin-left: 80%;
+  margin-top: 50%;
+  border-top: 20px solid red;
+  opacity: 0%;
+  transition: 0.1s ease-in;
+  transform: translateY(-20px);
+}
+#toregister:hover{
+  background-color: red;
+}
+#tologin:hover{
+  background-color: var(---button-color);
+  /* border-left: 0 solid var(---button-color); */
+  /* border-top-left-radius: 0%; */
+}
+#tologin:hover .arrow-down-login{
+  visibility: visible;
+  opacity: 100%;
+  transition: 300ms ease;
+  transform: translateY(0px);
+}
+#toregister:hover .arrow-down-register{
+  visibility: visible;
+  opacity: 100%;
+  transition: 300ms ease;
+  transform: translateY(0px);
+}
+
 .deletepost:hover{
   background-color: #1A1920;
   background:rgba(255, 0, 0, 0.2);
@@ -459,10 +580,7 @@ outline: none;
   border-radius: 20px;
   transition: 0.3s ease;
 }
-.welcomePage{
-  text-align: center;
 
-}
 .hidebtn{
   display: none;
 }
