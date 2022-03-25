@@ -15,10 +15,12 @@ const Welcome = (props) =>{
             
             <NavLink to="login" id="tologin">Login
             <div className="arrow-down-login"/>
+            <p className="delivWelPageLogin">Delivered</p>
             </NavLink>
             <br />
             <NavLink to="register" id="toregister">Register
             <div className="arrow-down-register"/>
+            <p className="delivWelPageRegi">Delivered</p>
             </NavLink>
             </nav>
         </div>

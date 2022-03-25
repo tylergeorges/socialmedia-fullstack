@@ -100,7 +100,7 @@ export const getLogin = (acc) => (dispatch) =>{
     })
 }
 
-export const fetchHome = () => (dispatch) =>{
+export const fetchHome = () =>  (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     instance 
     .get(`/home`, {withCredentials: true})

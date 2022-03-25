@@ -152,7 +152,7 @@ align-items: center;
   justify-content: center;
   transition: 300ms ease;
 }
-.arrow-down-login {
+/* .arrow-down-login {
   position: absolute;
   width: 0; 
   height: 0; 
@@ -164,9 +164,9 @@ align-items: center;
   opacity: 0%;
   transition: 0.1s ease-in;
   transform: translateY(-20px);
-}
+} */
 
-.arrow-down-register {
+/* .arrow-down-register {
   position: absolute;
   width: 0; 
   height: 0; 
@@ -178,26 +178,44 @@ align-items: center;
   opacity: 0%;
   transition: 0.1s ease-in;
   transform: translateY(-20px);
-}
+} */
 #toregister:hover{
   background-color: red;
+  border-top-right-radius: 0%;
 }
 #tologin:hover{
   background-color: var(---button-color);
-}
-#tologin:hover .arrow-down-login{
-  visibility: visible;
-  opacity: 100%;
-  transition: 300ms ease;
-  transform: translateY(0px);
-}
-#toregister:hover .arrow-down-register{
-  visibility: visible;
-  opacity: 100%;
-  transition: 300ms ease;
-  transform: translateY(0px);
-}
+  border-top-left-radius: 0%;
 
+}
+#tologin:hover .delivWelPageLogin{
+  visibility: visible;
+  opacity: 100%;
+  transition: 300ms ease;
+  transform: translateY(0px);
+}
+#toregister:hover .delivWelPageRegi{
+  visibility: visible;
+  opacity: 100%;
+  transition: 300ms ease;
+  transform: translateY(0px);
+}
+.delivWelPageLogin{
+  position: absolute;
+color: grey;
+right: 40%;
+top: 58%;
+font-size: 15px;
+opacity: 0%;
+}
+.delivWelPageRegi{
+position: absolute;
+color: grey;
+left: 95%;
+top: 95%;
+font-size: 15px;
+opacity: 0%;
+}
 .deletepost:hover{
   background-color: #1A1920;
   background:rgba(255, 0, 0, 0.2);
