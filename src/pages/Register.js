@@ -13,6 +13,9 @@ const Register = (props) =>{
 
     useEffect(() =>{
         props.fetchRegister()
+        if(props.match.url === '/register'){
+            document.getElementById('regSlider').classList.add("slideBottom")
+        }
     },[])
 
     const [account] = useState({
@@ -48,7 +51,6 @@ const Register = (props) =>{
     //     }else{
     //         console.log('acc not made')
     //     }
-        console.log(props)
         if(user !== '' && props.users.users.map(username => user !== username.username) && pass !== ''){
             // setNewAcc({username: user, password: pass})
             props.addAccount({username: user, password: pass})
@@ -58,11 +60,8 @@ const Register = (props) =>{
                 setExists(!exists)
             }
         setNewAcc({username: user, password: pass})
-        console.log(acc)
     }
 
-
-    console.log(props)
     return(
         <div className="formCon">
                <div className="welheadercon">
@@ -71,7 +70,7 @@ const Register = (props) =>{
             
             <div className="linkSliderCon">
                 <NavLink to="/login"id="loginSlider">Login</NavLink>
-                <NavLink to="/register"id="regSlider">Sign Up</NavLink>
+                <NavLink to="/register"id="regSlider">Register</NavLink>
             </div>
             <div className="weltxtcon">
             <div className="formHeaderCon">

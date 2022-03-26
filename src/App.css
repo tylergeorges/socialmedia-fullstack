@@ -176,13 +176,11 @@ position: absolute;
   margin-left: 5%;
   /* border-bottom: 5px solid var(---button-color); */
 }
-#loginSlider:focus{
-  font-size: 30px;
+.slideBottom{
   border-bottom: 5px solid var(---button-color);
+
 }
-#regSlider:focus{
-  border-bottom: 5px solid var(---button-color);
-}
+
 /* .arrow-down-login {
   position: absolute;
   width: 0; 
