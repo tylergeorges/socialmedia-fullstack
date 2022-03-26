@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import { addAccount, fetchRegister } from "../actions/actions"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 const mapStateToProps = (state) => ({
     users: state.users
@@ -65,7 +65,34 @@ const Register = (props) =>{
     console.log(props)
     return(
         <div className="formCon">
-        <div className="formConCenter">
+               <div className="welheadercon">
+                <h1 id="accountheader">Register</h1>
+            </div>
+            
+            <div className="linkSliderCon">
+                <NavLink to="/login"id="loginSlider">Login</NavLink>
+                <NavLink to="/register"id="regSlider">Sign Up</NavLink>
+            </div>
+            <div className="weltxtcon">
+            <div className="formHeaderCon">
+                
+                <h1 id="formHeader">Register</h1>
+            </div>
+                <nav className="welcomelinks">
+                <input type='text' placeholder="username" onChange={handleUser} id="username" />
+                <input type='text' placeholder="password" onChange={handlePass} id="password" />
+                    <button type="submit" className="formSubmit" onClick={handleSubmit} >Register</button>
+                    <br />
+                    <br />
+                    <nav className="linkotherpage">
+                        <div className="linkPageFooter">
+                        <p>Have an account? <Link to="/login" id="reglink">Login</Link></p>
+                        </div>
+                    </nav>
+                </nav>
+              
+            </div>
+        {/* <div className="formConCenter">
             <div className="formHeaderCon">
                 <h1 id="formHeader">Register</h1>
             </div>
@@ -78,7 +105,7 @@ const Register = (props) =>{
                 <Link to="/login" id="loginlink">Login</Link>
                 <br />
             </form>
-        </div>
+        </div> */}
     </div>
     )
 }

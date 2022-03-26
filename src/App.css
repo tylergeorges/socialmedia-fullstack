@@ -8,6 +8,7 @@ color: white;
   --main-bg-color:  #1F1C2C;
   --lighter-bg-color:   #353241;
   ---button-color: #7F00FF;
+  --light-gray: #dadce1;
 }
 body{
   /* margin-top: 4%; */
@@ -73,23 +74,27 @@ body{
   border-radius: 5px;
 } */
 .welcomePage{
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   position: relative;
-  text-align: center;
   align-items: center;
   justify-items: center;
   justify-content: center;
 }
+.welheadercon{
+position: absolute;
+background-color: #7F00FF;
+display: flex;
+align-items: center;
+justify-items: center;
+justify-content: center;
+width: 50%;
+height: 100%;
+left: 0;
+}
 .weltxtcon{
-  display: flex;
-  border-radius: 20px;
   position: relative;
-  /* bottom: 50; */
-  text-align: center;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  margin-left: 50%;
 }
 .welcomelinks{
     position: relative;
@@ -99,18 +104,17 @@ body{
     align-items: center;
     justify-content: center;
     justify-items: center;
-    height: 100%;
-    width: 100%;
 }
 .formHeaderCon{
-  position: relative;
+  position: absolute;
   display: flex;
-  width: 100%;
-  margin-bottom: 50%;
+  /* width: 100%; */
+  /* margin-bottom: 50%; */
   text-align: center;
 justify-content: center;
 justify-items: center;
 align-items: center;
+top: 0;
 }
 #accountheader{
   position: relative;
@@ -127,7 +131,7 @@ align-items: center;
 #tologin{
   color: white;
   border: none;
-  border: 1px solid var(---button-color);
+  border: 1px solid var(--lighter-bg-color);
   background-color: var(--main-bg-color);
   width: 150%;
   font-size: 40px;
@@ -138,11 +142,12 @@ align-items: center;
   justify-content: center;
   transition: 300ms ease;
   z-index: 1;
+  
 }
 #toregister{
   color: white;
   border: none;
-  border: 1px solid red;
+  border: 1px solid var(---button-color);
   width: 150%;
   font-size: 40px;
   border-radius: 50px;
@@ -151,6 +156,32 @@ align-items: center;
   align-items: center;
   justify-content: center;
   transition: 300ms ease;
+}
+#reglink{
+  color: #a54dff;
+}
+.linkSliderCon{
+position: absolute;
+ top: 6%;
+ left: 57%;
+ display: flex;
+ width: 40%;
+}
+#loginSlider{
+  font-size: 30px;
+  /* border-bottom: 5px solid var(---button-color); */
+}
+#regSlider{
+  font-size: 30px;
+  margin-left: 5%;
+  /* border-bottom: 5px solid var(---button-color); */
+}
+#loginSlider:focus{
+  font-size: 30px;
+  border-bottom: 5px solid var(---button-color);
+}
+#regSlider:focus{
+  border-bottom: 5px solid var(---button-color);
 }
 /* .arrow-down-login {
   position: absolute;
@@ -180,12 +211,13 @@ align-items: center;
   transform: translateY(-20px);
 } */
 #toregister:hover{
-  background-color: red;
-  border-top-right-radius: 0%;
+
+  background-color: var(---button-color);
+  border-bottom-right-radius: 0%;
 }
 #tologin:hover{
-  background-color: var(---button-color);
-  border-top-left-radius: 0%;
+  background-color: var(--lighter-bg-color);
+  border-bottom-left-radius: 0%;
 
 }
 #tologin:hover .delivWelPageLogin{
@@ -201,17 +233,17 @@ align-items: center;
   transform: translateY(0px);
 }
 .delivWelPageLogin{
-  position: absolute;
+position: absolute;
 color: grey;
-right: 40%;
-top: 58%;
+right: 57%;
+top: 34%;
 font-size: 15px;
 opacity: 0%;
 }
 .delivWelPageRegi{
 position: absolute;
 color: grey;
-left: 95%;
+left: 109%;
 top: 95%;
 font-size: 15px;
 opacity: 0%;
@@ -330,7 +362,7 @@ input:focus{
   position: relative;
   margin-right: 50%;
 }
-a:not(#loginlink, #reglink){
+a{
   text-decoration: none; 
 }
 .home{
@@ -500,34 +532,64 @@ a:not(#loginlink, #reglink){
 }
 
 #username{
-  color: black;
+  
+  color: #dadce1;
   text-indent: 5px;
   margin: 5px;
   width: 100%;
   height: 30px;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 1rem;
-  border: none;
-  background-color: #dadce1;
-}
+  border: 2px solid var(--lighter-bg-color);
+  background-color: transparent;
 
+}
+.linkotherpage{
+  position: relative;
+  display: flex;
+  /* margin-left: 15%; */
+  /* margin-top: 100%; */
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  text-align: center;
+}
+.linkPageFooter{
+  position: absolute;
+  text-align: center;
+}
+#userInput{
+  position: absolute;
+  color: #dadce1;
+  text-indent: 5px;
+  width: 350px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: none;
+  background-color: var(--main-bg-color);
+  /* margin-top: 150%; */
+  top: 150px;
+}
 #password{
-  color: black;
+  color: #dadce1;
   text-indent: 5px;
   margin: 5px;
   width: 100%;
   height: 30px;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 1rem;
-  border: none;
-  background-color: #dadce1;
+  border: 2px solid var(--lighter-bg-color);
+  background-color: var(--main-bg-color);
 }
 #password:focus{
-border: none;
+
 outline: none;
 }
 #username:focus{
-border: none;
+
 outline: none;
 }
 
@@ -543,6 +605,7 @@ outline: none;
 }
 
 .formAccInfo{
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -619,11 +682,12 @@ h1{
   color: white;
 }
 #formHeader{
-  position: relative;
+  position: absolute;
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
+    bottom: 0;
 }
 
 li{

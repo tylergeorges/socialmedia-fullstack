@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { fetchHome, fetchLogin, logOut, getLogin } from "../actions/actions"
 import { connect } from "react-redux"
 import { useEffect, useState } from "react"
@@ -30,14 +30,14 @@ const Login = (props) => {
         props.getLogin()
     }, [])
 
-    const handleSubmit =  (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
         loginAcc({ username: user, password: pass })
         // if(props.currentuser !== ''){
-            // }
-            if(user && pass !== ''){
-                
+        // }
+        if (user && pass !== '') {
+
             props.fetchLogin({ username: user, password: pass })
             props.history.push(`/home`)
         }
@@ -47,19 +47,34 @@ const Login = (props) => {
 
     return (
         <div className="formCon">
-            <div className="formConCenter">
+            <div className="welheadercon">
+                <h1 id="accountheader">Login</h1>
+            </div>
+            <div className="linkSliderCon">
+                <NavLink to="/login" id="loginSlider">Login</NavLink>
+                <NavLink to="/register" id="regSlider">Sign Up</NavLink>
+            </div>
+            <div className="weltxtcon">
                 <div className="formHeaderCon">
                     <h1 id="formHeader">Login</h1>
                 </div>
-
-                <form className="formAccInfo">
+                <nav className="welcomelinks">
                     <input type='text' placeholder="username" onChange={handleInput} id="username" />
                     <input type='text' placeholder="password" onChange={handleInput} id="password" />
                     <button type="submit" className="formSubmit" onClick={handleSubmit} >Login</button>
                     <br />
-                    <Link to="register" id="reglink">Register</Link>
-                    <br />
-                </form>
+                    <div>
+                        {/* <p>Don't have an account? <Link to="register" id="reglink">Register</Link></p> */}
+                        <br />
+                    </div>
+                    
+                    <nav className="linkotherpage">
+                        <div className="linkPageFooter">
+                            <p >Don't have an account? <Link to="register" id="reglink">Create Account</Link></p>
+                        </div>
+                    </nav>
+                    
+                </nav>
             </div>
         </div>
     )
