@@ -177,7 +177,6 @@ position: absolute;
   /* border-bottom: 5px solid var(---button-color); */
 }
 .slideBottom{
-  opacity: 0%;
   border-bottom: 5px solid var(---button-color);
 }
 
