@@ -3,6 +3,8 @@ import { fetchHome, fetchLogin, logOut, getLogin } from "../actions/actions"
 import { connect } from "react-redux"
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 const mapStateToProps = (state) => ({
     users: state.users,
     currentuser: state.currentuser
@@ -64,12 +66,14 @@ const Login = (props) => {
                     <h1 id="formHeader">Login</h1>
                 </div>
                 <nav className="welcomelinks">
-                    <input type='text' placeholder="username" onChange={handleInput} id="username" />
-                    <input type='text' placeholder="password" onChange={handleInput} id="password" />
+
+
+                    <input type='text' placeholder="Username" onChange={handleInput} id="username"/>
+                  
+                    <input type='text' placeholder="Password" onChange={handleInput} id="password" />
                     <button type="submit" className="formSubmit" onClick={handleSubmit} >Login</button>
                     <br />
                     <div>
-                        {/* <p>Don't have an account? <Link to="register" id="reglink">Register</Link></p> */}
                         <br />
                     </div>
                     

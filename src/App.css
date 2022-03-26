@@ -177,9 +177,10 @@ position: absolute;
   /* border-bottom: 5px solid var(---button-color); */
 }
 .slideBottom{
+  opacity: 0%;
   border-bottom: 5px solid var(---button-color);
-
 }
+
 
 /* .arrow-down-login {
   position: absolute;
@@ -230,6 +231,7 @@ position: absolute;
   transition: 300ms ease;
   transform: translateY(0px);
 }
+
 .delivWelPageLogin{
 position: absolute;
 color: grey;

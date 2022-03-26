@@ -78,8 +78,8 @@ const Register = (props) =>{
                 <h1 id="formHeader">Register</h1>
             </div>
                 <nav className="welcomelinks">
-                <input type='text' placeholder="username" onChange={handleUser} id="username" />
-                <input type='text' placeholder="password" onChange={handlePass} id="password" />
+                <input type='text' placeholder="Username" onChange={handleUser} id="username" />
+                <input type='text' placeholder="Password" onChange={handlePass} id="password" />
                     <button type="submit" className="formSubmit" onClick={handleSubmit} >Register</button>
                     <br />
                     <br />
