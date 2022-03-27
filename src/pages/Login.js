@@ -69,7 +69,7 @@ const Login = (props) => {
                 <div className="formHeaderCon">
                     <h1 id="formHeader">Login</h1>
                 </div>
-                <nav className="welcomelinks">
+                <form className="welcomelinks" autoComplete="off">
 
 
                     <input type='text' placeholder="Username" onChange={handleInput} id="username"/>
@@ -85,7 +85,7 @@ const Login = (props) => {
                         </div>
                     </nav>
 
-                </nav>
+                </form>
             </div>
         </div>
     )

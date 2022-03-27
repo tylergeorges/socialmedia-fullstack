@@ -80,7 +80,7 @@ const Register = (props) =>{
                 
                 <h1 id="formHeader">Register</h1>
             </div>
-                <nav className="welcomelinks">
+                <form className="welcomelinks" autoComplete="off">
                 <input type='text' placeholder="Username" onChange={handleUser} id="username" />
                 <input type='password' placeholder="Password" onChange={handlePass} id="password" />
                     <button type="submit" className="formSubmit" onClick={handleSubmit} >Register</button>
@@ -91,23 +91,10 @@ const Register = (props) =>{
                         <p>Have an account? <Link to="/login" id="reglink">Login</Link></p>
                         </div>
                     </nav>
-                </nav>
+                </form>
               
             </div>
-        {/* <div className="formConCenter">
-            <div className="formHeaderCon">
-                <h1 id="formHeader">Register</h1>
-            </div>
-
-            <form className="formAccInfo">
-                <input type='text' placeholder="username" onChange={handleUser} id="username" />
-                <input type='text' placeholder="password" onChange={handlePass} id="password" />
-                <button type="submit" className="formSubmit" onClick={handleSubmit} >Register</button>
-                <br />
-                <Link to="/login" id="loginlink">Login</Link>
-                <br />
-            </form>
-        </div> */}
+    
     </div>
     )
 }
