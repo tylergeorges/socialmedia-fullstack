@@ -24,15 +24,15 @@ const Search = (props) =>{
 
     useEffect(() =>{
         props.fetchHome(props.currentuser)
+        
         if(newResults === ''){
             props.searchUser(results)
-
         }else{
             props.searchUser(newResults)
-            props.history.push(`/search/${newResults}`)
+            history.push(`/search/${newResults}`)
         }
         // console.log(props.searchUser(results))
-    },[])
+    },[newResults])
 
 
 

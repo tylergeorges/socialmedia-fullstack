@@ -73,8 +73,8 @@ const Home = (props) =>{
           
                             </div>
 
-                            <Link to={`/${posts.author}/post/${posts._id}`}>
                                 <h2><Link to={`/${posts.author}`}>{posts.author}</Link></h2>
+                            <Link to={`/${posts.author}/post/${posts._id}`}>
                                 <p>{posts.text_content}</p>
                                 <p>{posts.date}</p>
                             </Link>

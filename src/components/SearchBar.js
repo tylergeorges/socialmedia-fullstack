@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
+
 const mapStateToProps = (state) =>({
     currentuser: state.currentuser,
     my_posts: state.my_posts,
@@ -14,18 +15,19 @@ const mapStateToProps = (state) =>({
 
 const SearchBar = (props) =>{
     const [search, setSearch] = useState('')
+    
     let history = useHistory()
     const handleSearch = (e) =>{
         e.preventDefault()
         setSearch(e.target.value)
 
     }
-
+    
     const submitSearch = (e) =>{
         e.preventDefault()
         // setSearchResults(search)
         // console.log(results)
-        if(search !== '' && props.users.map(username => search === username.username) ){
+        if(search !== '' && props.users.map(username => search === username.username)){
             history.push(`/search/${search}`)
         }
 

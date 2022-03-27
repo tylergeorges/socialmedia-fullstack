@@ -24,7 +24,6 @@ export default function reducer(state=initialState, action){
             ...state, isLoading:false, currentuser: state.currentuser, error: action.payload, users: state.users, 
         }
         case FETCH_SM_SUCCESS:
-            // console.log(action.payload)
         return{
             ...state, isLoading:false, currentuser: state.currentuser, error: '', users: state.users
         }

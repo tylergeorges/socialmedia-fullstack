@@ -38,7 +38,6 @@ export const fetchSm = () => (dispatch) =>{
     .get('/', {withCredentials: true})
     .then(data =>{
         dispatch({type: FETCH_SM_SUCCESS, payload: data})
-        console.log(data)
     })
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
@@ -48,8 +47,6 @@ export const fetchSm = () => (dispatch) =>{
 
 export const addAccount = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    console.log(acc)
-    console.log(acc)
 
     instance 
     .post('/register', acc, {withCredentials: true})
@@ -79,8 +76,6 @@ export const fetchLogin = (acc) =>  (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     instance 
     .post('/login', acc, {withCredentials: true})
-    // .then(data =>console.log(data.data.user))
-    // .then(async data => await console.log (data))
     .then( data =>{dispatch  ({type: FETCH_SM_LOGIN,  payload: data.data.user})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
@@ -91,8 +86,6 @@ export const getLogin = (acc) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
     instance 
     .get('/login',  {withCredentials: true})
-    // .then(data =>console.log(data.data.user))
-    // .then(data =>console.log(data))
     .then(data =>{dispatch ({type: GET_LOGIN, payload: data.data.logged_in})})
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
@@ -106,8 +99,6 @@ export const fetchHome = () =>  (dispatch) =>{
     .get(`/home`, {withCredentials: true})
     .then(data =>{
         dispatch({type: FETCH_SM_HOME, payload: data})
-        // console.log(data)
-        // .data.logged_in
     })
     .catch(err=>{
         dispatch({type: FETCH_SM_FAIL, payload: err.message})
@@ -116,7 +107,6 @@ export const fetchHome = () =>  (dispatch) =>{
 }
 export const makePost = (post) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    // console.log(post)
     instance 
     .post(`/home`, post, {withCredentials: true})
     .then(data =>{dispatch({type: CREATE_POST, payload: data})})
@@ -191,7 +181,6 @@ export const userNotfi = () => (dispatch) =>{
 }
 export const getPost = (postId) => (dispatch) =>{
     dispatch({type: FETCH_SM_START})
-    console.log(postId)
     instance
     .get(`/post/${postId}`,  postId, {withCredentials: true})
     .then(data =>{dispatch({type: GET_POST, payload: data})})

@@ -14,7 +14,6 @@ const mapStateToProps =(state) => ({
 
 
 const Post = (props) =>{
-    console.log(props)
     useEffect(() =>{
         props.getPost(props.match.params.postid)
     },[])

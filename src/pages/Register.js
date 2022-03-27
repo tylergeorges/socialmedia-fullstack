@@ -67,7 +67,7 @@ const Register = (props) =>{
         <div className="formCon">
                <div className="welheadercon">
                 <h1 id="accountheader">Register</h1>
-                <p id="headercaption">Create a Account</p>
+                <p id="headercaption">Create an Account</p>
 
             </div>
             
