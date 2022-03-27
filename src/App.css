@@ -12,10 +12,7 @@ color: white;
 }
 body{
   /* margin-top: 4%; */
-  /* background-color: #7f5a83; */
  background-color: #1F1C2C;
-  
-
 }
 
 .post{
@@ -81,6 +78,7 @@ body{
   justify-items: center;
   justify-content: center;
 }
+
 .welheadercon{
 position: absolute;
 background-color: #7F00FF;
@@ -88,9 +86,15 @@ display: flex;
 align-items: center;
 justify-items: center;
 justify-content: center;
+flex-direction: column;
 width: 50%;
 height: 100%;
 left: 0;
+}
+#headercaption{
+  position: absolute;
+  color: var(--light-gray);
+  margin-top: 80px;
 }
 .weltxtcon{
   position: relative;
@@ -108,13 +112,13 @@ left: 0;
 .formHeaderCon{
   position: absolute;
   display: flex;
-  /* width: 100%; */
-  /* margin-bottom: 50%; */
+
   text-align: center;
 justify-content: center;
 justify-items: center;
 align-items: center;
 top: 0;
+
 }
 #accountheader{
   position: relative;
@@ -122,9 +126,6 @@ top: 0;
   align-items: center;
   justify-content: center;
   justify-items: center;
-  /* top: 0; */
-  /* right: 0; */
-  /* left: 0; */
   text-align: center;
   font-size: 30px;
 }
@@ -169,15 +170,18 @@ position: absolute;
 }
 #loginSlider{
   font-size: 30px;
-  /* border-bottom: 5px solid var(---button-color); */
 }
 #regSlider{
   font-size: 30px;
   margin-left: 5%;
-  /* border-bottom: 5px solid var(---button-color); */
 }
 .slideBottom{
+  color: white;
   border-bottom: 5px solid var(---button-color);
+}
+.sliderNotFocused{
+  color: #5D5B67;
+  transition: 0.3s ease;
 }
 
 
@@ -222,13 +226,11 @@ position: absolute;
   visibility: visible;
   opacity: 100%;
   transition: 300ms ease;
-  transform: translateY(0px);
 }
 #toregister:hover .delivWelPageRegi{
   visibility: visible;
   opacity: 100%;
   transition: 300ms ease;
-  transform: translateY(0px);
 }
 
 .delivWelPageLogin{

@@ -7,17 +7,16 @@ const Welcome = (props) => {
     
             <div className="welheadercon">
                 <h1 id="accountheader">Welcome</h1>
+                <p id="headercaption">Login or Create a Account</p>
             </div>
 
             <div className="weltxtcon">
                 <nav className="welcomelinks">
                     <NavLink to="login" id="tologin">Login
-                        <div className="arrow-down-login" />
                         <p className="delivWelPageLogin">Delivered</p>
                     </NavLink>
                     <br />
                     <NavLink to="register" id="toregister">Register
-                        <div className="arrow-down-register" />
                         <p className="delivWelPageRegi">Delivered</p>
                     </NavLink>
                 </nav>

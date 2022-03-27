@@ -15,6 +15,7 @@ const Register = (props) =>{
         props.fetchRegister()
         if(props.match.url === '/register'){
             document.getElementById('regSlider').classList.add("slideBottom")
+            document.getElementById('loginSlider').classList.add("sliderNotFocused")
         }
     },[])
 
@@ -66,6 +67,8 @@ const Register = (props) =>{
         <div className="formCon">
                <div className="welheadercon">
                 <h1 id="accountheader">Register</h1>
+                <p id="headercaption">Create a Account</p>
+
             </div>
             
             <div className="linkSliderCon">
@@ -79,7 +82,7 @@ const Register = (props) =>{
             </div>
                 <nav className="welcomelinks">
                 <input type='text' placeholder="Username" onChange={handleUser} id="username" />
-                <input type='text' placeholder="Password" onChange={handlePass} id="password" />
+                <input type='password' placeholder="Password" onChange={handlePass} id="password" />
                     <button type="submit" className="formSubmit" onClick={handleSubmit} >Register</button>
                     <br />
                     <br />

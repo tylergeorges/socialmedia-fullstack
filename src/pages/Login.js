@@ -28,10 +28,12 @@ const Login = (props) => {
         }
 
     }
+    
     useEffect(() => {
         props.getLogin()
         if(props.match.url === '/login'){
             document.getElementById('loginSlider').classList.add("slideBottom")
+            document.getElementById('regSlider').classList.add("sliderNotFocused")
         }
     }, [])
 
@@ -56,6 +58,8 @@ const Login = (props) => {
         <div className="formCon">
             <div className="welheadercon">
                 <h1 id="accountheader">Login</h1>
+                <p id="headercaption">Login to existing account</p>
+
             </div>
             <div className="linkSliderCon">
                 <NavLink to="/login" id="loginSlider" >Login</NavLink>
@@ -70,12 +74,10 @@ const Login = (props) => {
 
                     <input type='text' placeholder="Username" onChange={handleInput} id="username"/>
                   
-                    <input type='text' placeholder="Password" onChange={handleInput} id="password" />
+                    <input type='password' placeholder="Password" onChange={handleInput} id="password" />
                     <button type="submit" className="formSubmit" onClick={handleSubmit} >Login</button>
                     <br />
-                    <div>
-                        <br />
-                    </div>
+                    <br />
                     
                     <nav className="linkotherpage">
                         <div className="linkPageFooter">
