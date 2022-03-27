@@ -23,8 +23,6 @@ const Search = (props) =>{
     const [newResults, setSearchResults] = useState('')
 
     useEffect(() =>{
-        props.fetchHome(props.currentuser)
-        
         if(newResults === ''){
             props.searchUser(results)
         }else{
@@ -32,24 +30,20 @@ const Search = (props) =>{
             history.push(`/search/${newResults}`)
         }
         // console.log(props.searchUser(results))
-    },[newResults])
+    }, [results])
 
 
 
     const handleSearch = (e) =>{
         e.preventDefault()
         setSearch(e.target.value)
-
     }
 
     const submitSearch = (e) =>{
         e.preventDefault()
-        // setSearchResults(search)
-        // console.log(results)
         if(search !== '' && props.users.map(username => search === username)){
             setSearchResults(search)
             console.log(newResults)
-            // history.go(`/search/${search}`)
         }
 
     }

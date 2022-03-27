@@ -41,7 +41,7 @@ const SideBar = (props) => {
                     </div>
 
                     <li>
-                        <FontAwesomeIcon icon={faHouse} /> <Link to="/home" ><h3 id="home">Home</h3></Link>
+                        <Link to="/home" ><h3 id="home">Home</h3></Link>
                     </li>
 
                     <li>
