@@ -1,4 +1,5 @@
 FULLSTACK SOCIAL MEDIA APP
+*Swagger documentation coming soon*
 
 live server: https://peppy-marigold-501d4b.netlify.app/
 
