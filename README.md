@@ -1,4 +1,4 @@
-FULLSTACK SOCIAL MEDIA APP
+# FULLSTACK SOCIAL MEDIA APP
 
 *Swagger documentation coming soon*
 
@@ -25,21 +25,21 @@ FRONTEND
 React, 
 redux, axios 
 
-UPCOMING FEATURES
+## UPCOMING FEATURES
 
---make it so data updates without refresh
+- make it so data updates without refresh
 
---add user profile pictures 
+- add user profile pictures 
 
---add user banners
+- add user banners
 
---add private accounts
+- add private accounts
 
---add notifications 
+- add notifications 
 
---make mobile friendly
+- make mobile friendly
 
---add liking and resharing posts
+- add liking and resharing posts
 
---add bookmarking
+- add bookmarking
 
